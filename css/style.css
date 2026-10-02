@@ -1,16 +1,148 @@
+/* Tokens on body so body.front can override them */
+body {
+    --page: #0c080d;
+    --dots: #2a1626;
+    --card: #171017;
+    --card-inner: #21141e;
+    --border: var(--pink);
+    --shadow: #000000;
+
+    --font: #fbe9f2;
+    --font-sec: #b8899f;
+
+    --pink: #ff6fae;
+    --pink-light: #ffc2dc;
+    --lace: #f6d9e6;
+    --red: #e8245f;
+    --wine: #9c2a5e;
+
+    --common: #a3a3ad;
+    --rare: #4d9aea;
+    --epic: #a57bf0;
+    --legendary: #f2b544;
+    --mythic: #e135af;
+
+    --name-font: "UnifrakturMaguntia", "Old English Text MT", serif;
+    --pixel-font: "DotGothic16", "MS Gothic", monospace;
+    --tiny-font: "Silkscreen", "DotGothic16", monospace;
+    --text-font: "Zen Maru Gothic", "Segoe UI", sans-serif;
+
+    color-scheme: dark;
+}
+
+body.front {
+    --page: #fff2f7;
+    --dots: #ffd6e7;
+    --card: #ffffff;
+    --card-inner: #fff6fa;
+    --shadow: #e7a9c4;
+
+    --font: #3b1830;
+    --font-sec: #8f5b77;
+
+    --pink: #e3438a;
+    --pink-light: #ffd3e5;
+    --lace: #ffffff;
+    --red: #d3124c;
+    --wine: #c2306f;
+
+    --common: #6e6e78;
+    --rare: #2a6fbd;
+    --legendary: #b57c00;
+    --mythic: #c0228f;
+
+    color-scheme: light;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
-    background: #0c080d;
-    color: #fbe9f2;
-    font-family: "Zen Maru Gothic", sans-serif;
+    background-color: var(--page);
+    background-image: radial-gradient(var(--dots-color) 1.2px, transparent 1.6px),
+        radial-gradient(var(--dots-color) 1.2px, transparent 1.6px);
+    background-size: 22px 22px;
+    background-position: 0 0, 11px 11px;
+    color: var(--font);
+    font-family: var(--text-font);
+    font-size: 16px;
+    line-height: 1.65;
+    transition: background-color 0.5s, color 0.5;
 }
 
-.test {
-    font-family: "UnifrakturMaguntia", sans-serif;
-    font-size: 64px;
-    color: #ff6fae;
+/* checkered pattern */
+body.front {
+    background-image: repeating-linear-gradient(0deg, color-mix(in srgb, var(--pink) 15%, transparent) 0 14px, transparent 14px 28px),
+        repeating-linear-gradient(90deg, color-mix(in srgb, var(--pink) 15%, transparent) 0 14px, transparent 14px 28px);
+    background-size: auto;
 }
 
-.test-pixel {
-    font-family: "DotGothic16", monospace;
+h1, h2 {
+    font-family: var(--name-font);
+    font-weight: 400;
+    line-height: 1;
+    color: var(--pink);
+    text-wrap: balance;
+}
+
+h1 {
+    font-size: clamp(64px, 10vw, 125px);
+    margin-block: 10px 8px;
+    text-shadow: 0 0 22px color-mix(in srgb, var(--pink) 55%, transparent), 4px 4px 0 var(--shadow);
+}
+
+h2 {
+    font-size: clamp(40px, 6vw, 64px);
+    margin-block: 6px 16px;
+    text-shadow: 3px 3px 0 var(--shadow);
+}
+
+h3 {
+    font-family: var(--pixel-font);
+    font-weight: 400;
+    font-size: 17px;
+    margin: 0;
+}
+
+a {
+    color: var(--pink);
+}
+
+a:hover {
+    color: var(--red);
+}
+
+::selection {
+    background: var(--pink);
+    color: var(--page);
+}
+
+:focus-visible {
+    outline: 2px dashed var(--border);
+    outline-offset: 3px;
+}
+
+.eyebrow {
+    font-family: var(--tiny-font);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--font-sec);
+}
+
+.lede {
+    max-width: 62ch;
+    font-size: 17px;
+    color: var(--font-sec);
 }
