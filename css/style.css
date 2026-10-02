@@ -1,0 +1,16 @@
+body {
+    margin: 0;
+    background: #0c080d;
+    color: #fbe9f2;
+    font-family: "Zen Maru Gothic", sans-serif;
+}
+
+.test {
+    font-family: "UnifrakturMaguntia", sans-serif;
+    font-size: 64px;
+    color: #ff6fae;
+}
+
+.test-pixel {
+    font-family: "DotGothic16", monospace;
+}
