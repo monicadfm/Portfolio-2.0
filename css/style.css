@@ -70,15 +70,15 @@ body.front {
 body {
     margin: 0;
     background-color: var(--page);
-    background-image: radial-gradient(var(--dots-color) 1.2px, transparent 1.6px),
-        radial-gradient(var(--dots-color) 1.2px, transparent 1.6px);
+    background-image: radial-gradient(var(--dots) 1.2px, transparent 1.6px),
+        radial-gradient(var(--dots) 1.2px, transparent 1.6px);
     background-size: 22px 22px;
     background-position: 0 0, 11px 11px;
     color: var(--font);
     font-family: var(--text-font);
     font-size: 16px;
     line-height: 1.65;
-    transition: background-color 0.5s, color 0.5;
+    transition: background-color 0.5s, color 0.5s;
 }
 
 /* checkered pattern */
@@ -147,8 +147,9 @@ a:hover {
     color: var(--font-sec);
 }
 
-.html {
+html {
     scroll-padding-top: 70px;
+    overflow-x: clip;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -171,7 +172,7 @@ nav {
     flex-wrap: wrap;
     gap: 14px;
     padding-block: 10px;
-    padding-inline: max(20px, calc((100% / 1140px) / 2));
+    padding-inline: max(20px, calc((100% - 1140px) / 2));
     background: var(--card);
     border-bottom: 2px solid var(--border);
 }
