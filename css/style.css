@@ -146,3 +146,135 @@ a:hover {
     font-size: 17px;
     color: var(--font-sec);
 }
+
+.html {
+    scroll-padding-top: 70px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+.sep {
+    margin-inline: 0.4em;
+    color: var(--pink);
+}
+
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    padding-block: 10px;
+    padding-inline: max(20px, calc((100% / 1140px) / 2));
+    background: var(--card);
+    border-bottom: 2px solid var(--border);
+}
+
+.logo {
+    font-family: var(--name-font);
+    font-size: 28px;
+    line-height: 1;
+    color: var(--pink);
+    text-decoration: none;
+}
+
+nav ul {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    gap: 4px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav ul a {
+    display: block;
+    padding: 4px 8px;
+    border: 1px solid transparent;
+    font-family: var(--tiny-font);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--font-sec);
+    text-decoration: none;
+}
+
+nav ul a:hover {
+    border-color: var(--border);
+    color: var(--font);
+}
+
+.nav-tools {
+    display: flex;
+    gap: 8px;
+}
+
+.chip {
+    padding: 4px 9px;
+    border: 1.5px solid var(--border);
+    background: transparent;
+    color: var(--font);
+    font-family: var(--tiny-font);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+}
+
+.chip:hover {
+    background: var(--pink);
+    color: var(--page);
+}
+
+@media (max-width: 760px) {
+    nav {
+        justify-content: space-between;
+    }
+
+    nav ul {
+        order: 3;
+        flex-basis: 100%;
+        justify-content: flex-start;
+        overflow-x: auto;
+    }
+}
+
+main, footer {
+    max-width: 1180px;
+    margin-inline: auto;
+    padding-inline: 20px;
+}
+
+header {
+    padding-block: 40px;
+}
+
+section {
+    padding-block: 48px;
+}
+
+/* temp scroll test */
+section {
+    min-height: 70vh;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding-block: 24px 48px;
+    border-top: 1px dashed var(--border);
+    font-family: var(--pixel-font);
+    font-size: 13px;
+    color: var(--font-sec);
+}
+
+footer p {
+    margin: 0;
+}

@@ -12,20 +12,58 @@
 </head>
 <body>
 
-    <main>
-        <p class="eyebrow">Step 1 · token test</p>
-        <h1>Monica ☆ Moura</h1>
-        <h2>project collection</h2>
-        <p class="lede">I build both sides of the app: the interface people click on, and the API and database underneath it.</p>
-        <h3>
-            <span style="color: var(--common);">COMMON</span>
-            <span style="color: var(--rare);">RARE</span>
-            <span style="color: var(--epic);">EPIC</span>
-            <span style="color: var(--legendary);">LEGENDARY</span>
-            <span style="color: var(--mythic);">MYTHIC</span>
-        </h3>
-        <p><a href="https://github.com/monicadfm">test link</a></p>
+    <nav aria-label="Main">
+        <a href="#top" class="logo">m☆m</a>
+        <ul>
+            <li><a href="#profile">profile</a></li>
+            <li><a href="#collection">collection</a></li>
+            <li><a href="#savepoints">save points</a></li>
+            <li><a href="#contact">contact</a></li>
+        </ul>
+        <div class="nav-tools">
+            <button class="chip" id="achievementsBtn" type="button" aria-label="Achievements">♡ <span id="achievementsCount">0</span></button>
+            <button class="chip" id="terminalBtn" type="button" aria-label="Open terminal">&gt;_ CTRL+`</button>
+        </div>
+    </nav>
+
+    <main id="top">
+
+        <header>
+            <p class="eyebrow">Software developer <span class="sep">·</span> Felgueiras, Portugal</p>
+            <h1>Monica ☆ Moura</h1>
+            <p class="lede">I build both sides of the app: the interface people click on, and the API and database underneath it.</p>
+        </header>
+
+        <section id="profile">
+            <p class="eyebrow">Sec.01 <span class="sep">//</span> stats &amp; stack</p>
+            <h2>player profile</h2>
+            <p class="lede">Backend main, frontend secondary.</p>
+        </section>
+
+        <section id="collection">
+            <p class="eyebrow">Sec.02 <span class="sep">//</span> 6/6 owned</p>
+            <h2>project collection</h2>
+            <p class="lede">Click a card for its quest briefing, or try your luck on the banner.</p>
+        </section>
+
+        <section id="savepoints">
+            <p class="eyebrow">Sec.03 <span class="sep">//</span> progress</p>
+            <h2>save points</h2>
+            <p class="lede">Where it started, and where the next save goes.</p>
+        </section>
+
+        <section id="contact">
+            <p class="eyebrow">Sec.04 <span class="sep">//</span> contact</p>
+            <h2>save your progress?</h2>
+            <p class="lede">Need someone for the front or the back?</p>
+        </section>
+
     </main>
+
+    <footer>
+        <p>© 2026 Monica Moura</p>
+        <p>Built with HTML, CSS &amp; vanilla JS ♡</p>
+    </footer>
 
     <script src="js/boot.js"></script>
 </body>
