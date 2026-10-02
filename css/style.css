@@ -245,6 +245,48 @@ nav ul a:hover {
     }
 }
 
+.ribbon {
+    width: 100vw;
+    margin-inline: calc(50% - 50vw);
+    margin-block: 34px;
+    overflow: hidden;
+    background: var(--pink);
+    color: var(--page);
+    border-block: 2px solid var(--font);
+    font-family: var(--tiny-font);
+    font-size: 16px;
+    letter-spacing: 0.12em;
+    white-space: nowrap;
+    transform: rotate(-1.5deg);
+}
+
+.ribbon.alt {
+    background: var(--font);
+    transform: rotate(1.2deg);
+}
+
+.ribbon-track {
+    display: flex;
+    width: max-content;
+    animation: ribbon-scroll 30s linear infinite;
+}
+
+.ribbon.alt .ribbon-track {
+    animation-direction: reverse;
+}
+
+.ribbon-track span {
+    padding-block: 9px;
+    padding-right: 0.8em;
+}
+
+/* half = one copy, so the loom is seamless */
+@keyframes ribbon-scroll {
+    to {
+        transform: translateX(-50%);
+    }
+}
+
 main, footer {
     max-width: 1180px;
     margin-inline: auto;
