@@ -368,6 +368,14 @@ main, footer {
     filter: drop-shadow(0 0 10px var(--pink));
 }
 
+.charm-shine {
+    fill: none;
+    stroke: var(--card);
+    stroke-width: 3;
+    stroke-linecap: round;
+    opacity: 0.6;
+}
+
 .charm-name {
     margin: 0;
     font-family: var(--name-font);
