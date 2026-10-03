@@ -830,6 +830,10 @@ section {
     transition: width 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
+.bars.waiting .bar-fill {
+    width: 0;
+}
+
 .bar.infinite .bar-fill {
     background: repeating-linear-gradient(90deg, var(--red) 0 8px, var(--pink) 8px 16px);
     background-size: 32px 100%;
