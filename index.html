@@ -283,6 +283,25 @@
             <p class="lede">Need someone for the front or the back?</p>
         </section>
 
+        <dialog class="quest" id="questDialog" aria-labelledby="questName">
+            <div class="window-bar">
+                <span class="window-title">✦ quest_briefing.exe</span>
+                <form method="dialog">
+                    <button class="window-btn" type="submit" aria-label="Close">×</button>
+                </form>
+            </div>
+
+            <div class="window-body quest-body">
+                <p class="card-rarity" id="questRarity"><span>mythic</span><span>★★★★★</span></p>
+                <h3 class="quest-name" id="questName">Quest name</h3>
+                <p class="quest-status" id="questStatus">status: in progress</p>
+                <p class="quest-description" id="questDescription">Quest description goes here.</p>
+                <p class="quest-label">equipment</p>
+                <div class="card-tags" id="questTags"><span>Tag</span></div>
+                <div class="quest-links" id="questLinks"><a class="btn primary" href="#">▸ view code ↗</a></div>
+            </div>
+        </dialog>
+
     </main>
 
     <footer>

@@ -969,6 +969,10 @@ body:not(.front) .side.frontend, body.front .side.backend {
     box-shadow: 0 7px 0 var(--c);
 }
 
+[data-rarity="common"] {
+    --c: var(--common);
+}
+
 .card[data-rarity="rare"] {
     --c: var(--rare);
 }
@@ -1161,6 +1165,65 @@ body:not(.front) .side.frontend, body.front .side.backend {
 
 .window-body {
     padding: 16px 18px;
+}
+
+.quest {
+    width: min(560px, calc(100% - 32px));
+    padding: 0;
+    background: var(--card);
+    border: 2px solid var(--c);
+    box-shadow: 6px 6px 0 var(--c);
+    color: var(--font);
+}
+
+.quest::backdrop {
+    background: color-mix(in srgb, var(--page) 80%, transparent);
+}
+
+.quest .window-btn {
+    padding: 0;
+    cursor: pointer;
+}
+
+.quest-body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.quest-body p {
+    margin: 0;
+}
+
+.quest-name {
+    font-size: 28px;
+}
+
+.quest-status, .quest-label {
+    font-family: var(--tiny-font);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.quest-status {
+    color: var(--font-sec);
+}
+
+.quest-description {
+    color: var(--font-sec);
+}
+
+.quest-label {
+    margin-top: 6px;
+    color: var(--c);
+}
+
+.quest-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
 }
 
 footer {
