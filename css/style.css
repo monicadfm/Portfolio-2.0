@@ -1168,7 +1168,7 @@ body:not(.front) .side.frontend, body.front .side.backend {
 }
 
 .quest {
-    width: min(560px, calc(100% - 32px));
+    width: min(680px, calc(100% - 32px));
     padding: 0;
     background: var(--card);
     border: 2px solid var(--c);
@@ -1212,6 +1212,28 @@ body:not(.front) .side.frontend, body.front .side.backend {
 
 .quest-description {
     color: var(--font-sec);
+}
+
+.quest-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 4px 18px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 15px;
+}
+
+.quest-features li {
+    position: relative;
+    padding-left: 18px;
+}
+
+.quest-features li::before {
+    content: "✦";
+    position: absolute;
+    left: 0;
+    color: var(--c);
 }
 
 .quest-label {

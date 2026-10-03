@@ -18,6 +18,14 @@ const PROJECTS = [
         status: "In progress",
         description: "A web and mobile platform for collecting virtual characters. Pull from limited-time banners, build a collection and grow friendship levels.",
         tags: ["ASP.NET Core", "SQL Server", ".NET MAUI", "JavaScript"],
+        features: [
+            "Limited-time banners with a pity system",
+            "Inventory, coins and tickets",
+            "Friendship levels and rewards with characters",
+            "A companion character who greets you on Home",
+            "Admin tools with an audit log of every action",
+            "Mobile app with daily rewards and push notifications"
+        ],
         repo: "https://github.com/monicadfm/WishBound"
     },
     {
@@ -27,6 +35,12 @@ const PROJECTS = [
         status: "Complete",
         description: "A roguelike sidescroller built with JavaScript, HTML and CSS. Desktop only.",
         tags: ["JavaScript", "HTML", "CSS"],
+        features: [
+            "Playable in the browser, no install",
+            "Roguelike runs, so no two are the same",
+            "Start menu",
+            "Plain JavaScript, no frameworks"
+        ],
         repo: "https://github.com/monicadfm/Sidescroller-Game-Code",
         demo: "https://monicadfm.github.io/Sidescroller-Game-Code/Menu/index.html"
     },
@@ -37,6 +51,10 @@ const PROJECTS = [
         status: "Complete",
         description: "A bot for Discord servers, written in Python.",
         tags: ["Python", "Discord API"],
+        features: [
+            "Responds to commands in Discord servers",
+            "Built on the Discord API"
+        ],
         repo: "https://github.com/monicadfm/Python-Discord-Bot"
     },
     {
@@ -46,6 +64,10 @@ const PROJECTS = [
         status: "Complete",
         description: "The classic snake game, built in Python.",
         tags: ["Python"],
+        features: [
+            "Classic grid movement",
+            "The snake grows every time it eats"
+        ],
         repo: "https://github.com/monicadfm/Python-Snake-Game"
     },
     {
@@ -55,6 +77,11 @@ const PROJECTS = [
         status: "Complete",
         description: "Play against the computer from the terminal.",
         tags: ["Python"],
+        features: [
+            "Play against the computer",
+            "The computer picks at random",
+            "Runs in the terminal"
+        ],
         repo: "https://github.com/monicadfm/RPS_python"
     },
     {
@@ -64,6 +91,10 @@ const PROJECTS = [
         status: "Complete",
         description: "A small dice-rolling simulator.",
         tags: ["Python"],
+        features: [
+            "Simulates dice rolls",
+            "A random result every roll"
+        ],
         repo: "https://github.com/monicadfm/Python-Dice-Roll"
     }
 ];

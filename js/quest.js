@@ -6,6 +6,7 @@ const questDescription = document.getElementById("questDescription");
 const questTags = document.getElementById("questTags");
 const questLinks = document.getElementById("questLinks");
 const questFile = document.getElementById("questFile");
+const questFeatures = document.getElementById("questFeatures");
 
 function makeLink(text, url, className) {
     const link = makeElement("a", className, text);
@@ -34,6 +35,12 @@ function openQuest(project) {
 
     questStatus.textContent = "status: " + project.status;
     questDescription.textContent = project.description;
+
+    questFeatures.replaceChildren();
+
+    for (const feature of project.features) {
+        questFeatures.append(makeElement("li", "", feature));
+    }
 
     questTags.replaceChildren();
 
