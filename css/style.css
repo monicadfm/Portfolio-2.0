@@ -908,6 +908,104 @@ body:not(.front) .side.frontend, body.front .side.backend {
     color: var(--page);
 }
 
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+}
+
+.card {
+    --c: var(--common);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    padding: 16px;
+    background: var(--card);
+    border: 2px solid var(--c);
+    color: var(--font);
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-4px) rotate(-0.4deg);
+    box-shadow: 0 7px 0 var(--c);
+}
+
+.card[data-rarity="rare"] {
+    --c: var(--rare);
+}
+
+.card[data-rarity="epic"] {
+    --c: var(--epic);
+}
+
+.card[data-rarity="legendary"] {
+    --c: var(--legendary);
+}
+
+.card[data-rarity="mythic"] {
+    --c: var(--mythic);
+    background: linear-gradient(160deg, color-mix(in srgb, var(--mythic) 22%, var(--card)), var(--card) 65%);
+}
+
+.card-rarity {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--pixel-font);
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--c);
+}
+
+.card-name {
+    font-family: var(--pixel-font);
+    font-size: 22px;
+}
+
+.card-description {
+    flex: 1;
+    font-size: 15px;
+    color: var(--font-sec);
+}
+
+.card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.card-tags span {
+    padding: 0 6px;
+    border: 1px solid var(--c);
+    font-family: var(--tiny-font);
+    font-size: 11px;
+}
+
+.card-more {
+    font-family: var(--tiny-font);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: var(--pink);
+}
+
+.card-wip {
+    position: absolute;
+    top: -11px;
+    right: 10px;
+    padding: 1px 6px;
+    background: var(--red);
+    color: #ffffff;
+    font-family: var(--tiny-font);
+    font-size: 11px;
+    transform: rotate(4deg);
+}
+
 .window {
     min-width: 0;
     background: var(--card);
