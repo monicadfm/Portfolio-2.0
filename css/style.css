@@ -932,6 +932,14 @@ body:not(.front) .side.frontend, body.front .side.backend {
     color: var(--font-sec);
 }
 
+.hearts {
+    display: flex;
+    gap: 4px;
+    font-size: 18px;
+    line-height: 1;
+    color: var(--pink);
+}
+
 .hearts span {
     opacity: 0.35;
 }
@@ -1019,6 +1027,76 @@ body:not(.front) .side.frontend, body.front .side.backend {
 [data-rarity="mythic"] {
     --c: var(--mythic);
     background: linear-gradient(160deg, color-mix(in srgb, var(--mythic) 22%, var(--card)), var(--card) 65%);
+}
+
+.reveal {
+    width: min(360px, calc(100% - 32px));
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--font);
+    overflow: visible;
+}
+
+/* only when open to prevent text showin when closed */
+.reveal[open] {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.reveal::backdrop {
+    background: color-mix(in srgb, var(--page) 84%, transparent);
+}
+
+.reveal-headline, .reveal-sub {
+    margin: 0;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.reveal-headline {
+    font-family: var(--pixel-font);
+    font-size: 30px;
+    line-height: 1.1;
+    letter-spacing: 0.12em;
+    text-shadow: 2px 2px 0 var(--c), 0 0 12px color-mix(in srgb, var(--c) 50%, transparent);
+}
+
+.reveal-sub {
+    margin-top: -6px;
+    font-family: var(--tiny-font);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: var(--font-sec);
+}
+
+.reveal-sub.celebrate {
+    color: var(--c);
+}
+
+.reveal .card {
+    box-shadow: 0 0 0 3px var(--c), 0 0 50px var(--c);
+    animation: pop 0.45s cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+
+@keyframes pop {
+    from {
+        transform: scale(0.4) rotate(-6deg);
+        opacity: 0;
+    }
+}
+
+.reveal-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.reveal-buttons .btn {
+    padding: 10px 14px;
+    font-size: 12px;
 }
 
 .card-rarity {

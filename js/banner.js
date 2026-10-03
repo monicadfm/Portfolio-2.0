@@ -10,7 +10,7 @@ const RATES = [
     { rarity: "mythic", weight: 0.5 }
 ];
 
-const bannerState = { pity: 0, total: 0 };
+const bannerState = { pity: 0, total: 0, guaranteed: false };
 
 function pickRandom(list) {
     const index = Math.floor(Math.random() * list.length);
@@ -43,9 +43,11 @@ function rollRarity(state) {
     let rarity;
 
     if (state.pity >= HARD_PITY) {
-        // keeps legendary and mythic at 5:1
-        rarity = Math.random() < 1 / 6 ? "mythic" : "legendary";
-    } else {
+        // 50/50 rule : win Mythic
+        rarity = state.guaranteed || Math.random() < 0.5 ? "mythic" : "legendary";
+        state.guaranteed = rarity === "legendary";
+    } 
+    else {
         rarity = pickRarity();
     }
 
@@ -98,6 +100,65 @@ function testRates(pulls) {
 const pityHearts = document.getElementById("pityHearts");
 const pityText = document.getElementById("pityText");
 const pullBtn = document.getElementById("pullBtn");
+const revealDialog = document.getElementById("revealDialog");
+const revealHeadline = document.getElementById("revealHeadline");
+const revealSub = document.getElementById("revealSub");
+const revealCard = document.getElementById("revealCard");
+const pullAgainBtn = document.getElementById("pullAgainBtn");
+const revealBriefBtn = document.getElementById("revealBriefBtn");
+
+const CELEBRATIONS = {
+    legendary: "lucky pull! pity reset ♡",
+    mythic: "jackpot!! you found my main quest ♡"
+};
+
+let lastPull = null;
+
+function pityStatus() {
+    const left = HARD_PITY - bannerState.pity;
+    const odds = left === 1 ? "legendary+ guaranteed next pull" : "legendary+ within " + left + " pulls";
+
+    return "pity " + bannerState.pity + "/" + HARD_PITY + " · " + odds;
+}
+
+function showReveal(project) {
+    const high = isHighRarity(project.rarity);
+
+    lastPull = project;
+    revealDialog.dataset.rarity = project.rarity;
+    revealHeadline.textContent = high ? "✦ " + project.rarity + " ✦" : project.rarity;
+    revealSub.textContent = CELEBRATIONS[project.rarity] || pityStatus();
+    revealSub.classList.toggle("celebrate", high);
+    revealCard.replaceChildren(createCard(project, PROJECTS.indexOf(project)));
+
+    // pull again while it's open would throw
+    if (!revealDialog.open) {
+        revealDialog.showModal();
+    }
+}
+
+function pull() {
+    const project = pullProject(bannerState);
+
+    renderPity();
+    showReveal(project);
+}
+
+function openPulledBriefing() {
+    revealDialog.close();
+    openQuest(lastPull);
+}
+
+pullBtn.addEventListener("click", pull);
+pullAgainBtn.addEventListener("click", pull);
+revealBriefBtn.addEventListener("click", openPulledBriefing);
+revealCard.addEventListener("click", openPulledBriefing);
+
+revealDialog.addEventListener("click", function (event) {
+    if (event.target === revealDialog) {
+        revealDialog.close();
+    }
+});
 
 function renderPity() {
     pityHearts.replaceChildren();
@@ -110,13 +171,5 @@ function renderPity() {
 
     pityText.textContent = "pity " + bannerState.pity + "/" + HARD_PITY; 
 }
-
-pullBtn.addEventListener("click", function () {
-    const project = pullProject(bannerState);
-
-    renderPity();
-    //temporary until the reveal
-    console.log("pulled", project.name, project.rarity);
-});
 
 renderPity();
