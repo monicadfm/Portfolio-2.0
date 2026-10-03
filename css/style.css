@@ -908,11 +908,42 @@ body:not(.front) .side.frontend, body.front .side.backend {
     color: var(--page);
 }
 
+.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px 24px;
+    margin-bottom: 25px;
+}
+
+.pullbox {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.pity {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-family: var(--pixel-font);
+    font-size: 14px;
+    color: var(--font-sec);
+}
+
+.hearts span {
+    opacity: 0.35;
+}
+
+.hearts .full {
+    opacity: 1;
+}
+
 .filters {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    margin-bottom: 25px;
 }
 
 .filter {

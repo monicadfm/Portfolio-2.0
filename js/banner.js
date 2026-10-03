@@ -94,3 +94,29 @@ function testRates(pulls) {
     console.table(percentages);
     console.log("Longest wait for legendary+:", longestWait, "pulls");
 }
+
+const pityHearts = document.getElementById("pityHearts");
+const pityText = document.getElementById("pityText");
+const pullBtn = document.getElementById("pullBtn");
+
+function renderPity() {
+    pityHearts.replaceChildren();
+
+    for (let i = 0; i < HARD_PITY; i++) {
+        const full = i < bannerState.pity;
+
+        pityHearts.append(makeElement("span", full ? "full" : "", full ? "♥" : "♡"));
+    }
+
+    pityText.textContent = "pity " + bannerState.pity + "/" + HARD_PITY; 
+}
+
+pullBtn.addEventListener("click", function () {
+    const project = pullProject(bannerState);
+
+    renderPity();
+    //temporary until the reveal
+    console.log("pulled", project.name, project.rarity);
+});
+
+renderPity();
