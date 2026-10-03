@@ -28,10 +28,29 @@
 
     <main id="top">
 
-        <header>
-            <p class="eyebrow">Software developer <span class="sep">·</span> Felgueiras, Portugal</p>
-            <h1>Monica ☆ Moura</h1>
-            <p class="lede">I build both sides of the app: the interface people click on, and the API and database underneath it.</p>
+        <header class="hero">
+            <div class="ghost" aria-hidden="true"><span id="ghostWord">backend</span></div>
+
+            <div class="hero-text">
+                <p class="command" id="command" aria-hidden="true"></p>
+                <h1>Monica <span class="star">☆</span><br>Moura</h1>
+                <p class="role">software developer <span class="sep">✦</span> <strong>C# · ASP.NET Core · SQL Server</strong></p>
+                <p class="lede">I build both sides of the app: the interface people click on, and the API and database underneath it. Finishing my CET at CINEL and looking for a backend internship.</p>
+
+                <div class="links">
+                    <a href="#collection" class="btn primary">✦ view collection</a>
+                    <a href="#contact" class="btn">♡ get in touch</a>
+                </div>
+
+                <div class="switch">
+                    <span class="switch-label front-label">♡ FRONT</span>
+                    <button id="sideSwitch" type="button" role="switch" aria-checked="true" aria-label="Back side"></button>
+                    <span class="switch-label back-label">BACK †</span>
+                    <span class="switch-note" id="sideNote">you're on the back side</span>
+                </div>
+            </div>
+
+            <div class="hero-stage" id="stage"></div>
         </header>
 
         <div class="ribbon" aria-hidden="true">
@@ -105,5 +124,7 @@
     </footer>
 
     <script src="js/boot.js"></script>
+    <script src="js/hero.js"></script>
+    <script src="js/side.js"></script>
 </body>
 </html>

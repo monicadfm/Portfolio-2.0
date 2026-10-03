@@ -280,7 +280,7 @@ nav ul a:hover {
     padding-right: 0.8em;
 }
 
-/* half = one copy, so the loom is seamless */
+/* half = one copy, so the loop is seamless */
 @keyframes ribbon-scroll {
     to {
         transform: translateX(-50%);
@@ -293,8 +293,206 @@ main, footer {
     padding-inline: 20px;
 }
 
-header {
-    padding-block: 40px;
+.hero {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    gap: 20px;
+    align-items: center;
+    min-height: 520px;
+    padding-block: 30px 10px;
+}
+
+@media (max-width: 860px) {
+    .hero {
+        grid-template-columns: 1fr;
+        min-height: 0;
+    }
+}
+
+.ghost {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.ghost span {
+    font-family: var(--name-font);
+    font-size: clamp(90px, 19vw, 250px);
+    line-height: 0.8;
+    color: transparent;
+    -webkit-text-stroke: 1.5px color-mix(in srgb, var(--pink) 30%, transparent);
+    white-space: nowrap;
+}
+
+/* above the ghost word */
+.hero-text, .hero-stage {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-stage {
+    min-height: 440px;
+}
+
+.command {
+    min-height: 1.6em;
+    margin: 0;
+    font-family: var(--pixel-font);
+    font-size: 14px;
+    color: var(--font-sec);
+}
+
+.command b {
+    font-weight: 400;
+    color: var(--pink);
+}
+
+.caret {
+    display: inline-block;
+    width: 8px;
+    height: 15px;
+    margin-left: 4px;
+    vertical-align: -2px;
+    background: var(--pink);
+    animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+.hero h1 {
+    line-height: 0.9;
+}
+
+.star {
+    display: inline-block;
+    font-family: var(--pixel-font);
+    font-size: 0.35em;
+    vertical-align: middle;
+    animation: spin 4s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.role {
+    margin: 0;
+    font-family: var(--tiny-font);
+    font-size: 13px;
+    letter-spacing: 0.12em;
+}
+
+.role strong {
+    font-weight: 400;
+    color: var(--pink);
+}
+
+.links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 22px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 16px;
+    border: 2px solid var(--border);
+    background: var(--card);
+    color: var(--font);
+    font-family: var(--tiny-font);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    box-shadow: 3px 3px 0 var(--shadow);
+    transition: transform 0.1s;
+}
+
+.btn:hover {
+    background: var(--pink);
+    color: var(--page);
+}
+
+.btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 var(--shadow);
+}
+
+.btn.primary {
+    background: var(--pink);
+    color: var(--page);
+    border-color: var(--font);
+}
+
+.switch {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-top: 22px;
+    font-family: var(--tiny-font);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+}
+
+.switch-label {
+    opacity: 0.45;
+    transition: opacity 0.3s;
+}
+
+body.front .front-label, body:not(.front) .back-label {
+    opacity: 1;
+    color: var(--pink);
+}
+
+.switch button {
+    position: relative;
+    width: 64px;
+    height: 28px;
+    padding: 0;
+    border: 2px solid var(--border);
+    border-radius: 20px;
+    background: var(--card-inner);
+    cursor: pointer;
+}
+
+.switch button::after {
+    content: "†";
+    position: absolute;
+    top: 2px;
+    left: 37px;
+    display: grid;
+    place-items: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--pink);
+    color: var(--page);
+    font-size: 12px;
+    /* bounce */
+    transition: left 0.3s cubic-bezier(0.5, 1.8, 0.5, 1);
+}
+
+body.front .switch button::after {
+    content: "♡";
+    left: 3px;
+}
+
+.switch-note {
+    font-family: var(--pixel-font);
+    font-size: 12px;
+    letter-spacing: 0;
+    color: var(--font-sec);
 }
 
 section {
@@ -305,6 +503,7 @@ section {
 section {
     min-height: 70vh;
 }
+
 .window {
     min-width: 0;
     background: var(--card);
