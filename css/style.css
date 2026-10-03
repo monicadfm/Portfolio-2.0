@@ -141,6 +141,14 @@ a:hover {
     color: var(--font-sec);
 }
 
+.eyebrow .sec {
+    color: var(--pink);
+}
+
+.eyebrow .sep {
+    color: inherit;
+}
+
 .lede {
     max-width: 62ch;
     font-size: 19px;
@@ -632,6 +640,75 @@ section {
 /* temp scroll test */
 section {
     min-height: 70vh;
+}
+
+.section-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 12px 32px;
+    margin-bottom: 28px;
+}
+
+.section-head h2 {
+    margin-bottom: 0;
+}
+
+.section-head .lede {
+    max-width: 46ch;
+    margin: 0;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+}
+
+@media (max-width: 700px) {
+    .stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+.stat {
+    position: relative;
+    padding: 14px 16px;
+    background: var(--card);
+    border: 2px solid var(--border);
+    box-shadow: 4px 4px 0 var(--shadow);
+}
+
+.stat::after {
+    content: "♡";
+    position: absolute;
+    top: 6px;
+    right: 10px;
+    font-size: 14px;
+    color: var(--pink);
+}
+
+.stat-number {
+    margin: 0;
+    font-family: var(--pixel-font);
+    font-size: 44px;
+    line-height: 1;
+    /* width set so the count-up doesn't wobble */
+    font-variant-numeric: tabular-nums;
+}
+
+.stat-number .plus {
+    color: var(--pink);
+}
+
+.stat-label {
+    margin: 6px 0 0;
+    font-family: var(--tiny-font);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--font-sec);
 }
 
 .window {
