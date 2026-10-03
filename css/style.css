@@ -1006,6 +1006,86 @@ body:not(.front) .side.frontend, body.front .side.backend {
     transform: rotate(4deg);
 }
 
+.loading-card {
+    --c: var(--pink);
+    grid-column: span 2;
+    background: var(--card-inner);
+    font-family: var(--pixel-font);
+    text-decoration: none;
+}
+
+/* span it to 2 columns */
+@media (max-width: 620px) {
+    .loading-card {
+        grid-column: auto;
+    }
+}
+
+.console {
+    font-size: 18px;
+    color: var(--font);
+}
+
+.console b {
+    color: var(--pink);
+    font-weight: 400;
+}
+
+.dots::after {
+    content: "...";
+    display: inline-block;
+    width: 3ch;
+    overflow: hidden;
+    vertical-align: bottom;
+    animation: dots 1.2s steps(4) infinite;
+}
+
+@keyframes dots {
+    from { width: 0; }
+    to { width: 3ch; }
+}
+
+.loadbar {
+    display: block;
+    width: calc(round(down, 100% - 5px, 13px) + 5px);
+    height: 18px;
+    padding: 2px;
+    border: 2px solid var(--pink);
+    background: var(--page);
+}
+ /* 13px = one block + gap */
+.loadbar span {
+    display: block;
+    width: calc(13px * 24);
+    max-width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(90deg, var(--pink) 0 10px, transparent 10px 13px);
+    animation: load 5s steps(50) infinite;
+}
+
+@keyframes load {
+    from { width: 0; }
+    to { width: calc(13px * 50); }
+}
+
+.wip-list {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-top: 8px;
+    font-size: 15px;
+    color: var(--font-sec);
+}
+
+.wip-list span::before {
+    content: "✦ ";
+    color: var(--pink);
+}
+
+.wip-list .internship {
+    color: var(--red);
+}
+
 .window {
     min-width: 0;
     background: var(--card);

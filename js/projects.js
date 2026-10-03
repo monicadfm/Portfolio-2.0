@@ -1,4 +1,5 @@
 const cardGrid = document.getElementById("cardGrid");
+const loadingCard = document.getElementById("loadingCard");
 
 const RARITY_STARS = {
     common: 1,
@@ -106,10 +107,8 @@ function createCard(project, index) {
 }
 
 function renderCards() {
-    cardGrid.textContent = "";
-
     PROJECTS.forEach(function (project, index) {
-        cardGrid.append(createCard(project, index));
+        cardGrid.insertBefore(createCard(project, index), loadingCard);
     });
 }
 
