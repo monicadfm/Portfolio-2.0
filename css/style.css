@@ -1008,6 +1008,16 @@ body:not(.front) .side.frontend, body.front .side.backend {
     box-shadow: 0 7px 0 var(--c);
 }
 
+.card.hit {
+    animation: glow 1.2s ease 2;
+}
+
+@keyframes glow {
+    50% {
+        box-shadow: 0 0 0 4px var(--c), 0 0 30px var(--c);
+    }
+}
+
 [data-rarity="common"] {
     --c: var(--common);
 }

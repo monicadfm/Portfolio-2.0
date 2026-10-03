@@ -69,7 +69,7 @@ function pullProject(state) {
 
 // run testRates(10000) in the console
 function testRates(pulls) {
-    const state = { pity: 0, total: 0 };
+    const state = { pity: 0, total: 0, guaranteed: false };
     const counts = {};
     let wait = 0;
     let longestWait = 0;
@@ -149,6 +149,20 @@ function openPulledBriefing() {
     openQuest(lastPull);
 }
 
+function highlightCard(project) {
+    const card = cardGrid.querySelector('.card[data-index="' + PROJECTS.indexOf(project) + '"]');
+
+    if (!card) {
+        return;
+    }
+
+    card.scrollIntoView({ block: "nearest" });
+    card.classList.remove("hit");
+    // forces reflow for animation replay
+    void card.offsetWidth;
+    card.classList.add("hit");
+}
+
 pullBtn.addEventListener("click", pull);
 pullAgainBtn.addEventListener("click", pull);
 revealBriefBtn.addEventListener("click", openPulledBriefing);
@@ -158,6 +172,16 @@ revealDialog.addEventListener("click", function (event) {
     if (event.target === revealDialog) {
         revealDialog.close();
     }
+});
+
+revealDialog.addEventListener("click", function (event) {
+    if (event.target === revealDialog) {
+        revealDialog.close();
+    }
+});
+
+revealDialog.addEventListener("close", function () {
+    highlightCard(lastPull);
 });
 
 function renderPity() {
