@@ -10,6 +10,7 @@ async function loadRepoCount() {
         const data = await response.json();
 
         document.querySelectorAll(".repo-count").forEach(function (element) {
+            element.dataset.target = data.public_repos;
             element.textContent = data.public_repos;
         });
     } 

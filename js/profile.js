@@ -4,11 +4,13 @@ const bars = document.getElementById("bars");
 const COUNT_DURATION = 800;
 
 function countUp(element) {
-    const target = Number(element.textContent);
     const start = performance.now();
+
+    element.dataset.target = element.textContent;
 
     function tick(now) {
         const progress = Math.min((now - start) / COUNT_DURATION, 1);
+        const target = Number(element.dataset.target);
 
         element.textContent = Math.round(target * progress);
 
