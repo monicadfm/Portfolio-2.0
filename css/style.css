@@ -1087,14 +1087,6 @@ body:not(.front) .side.frontend, body.front .side.backend {
 
 .reveal .card {
     box-shadow: 0 0 0 3px var(--c), 0 0 50px var(--c);
-    animation: pop 0.45s cubic-bezier(0.3, 1.6, 0.5, 1);
-}
-
-@keyframes pop {
-    from {
-        transform: scale(0.4) rotate(-6deg);
-        opacity: 0;
-    }
 }
 
 .reveal-buttons {
@@ -1107,6 +1099,180 @@ body:not(.front) .side.frontend, body.front .side.backend {
 .reveal-buttons .btn {
     padding: 10px 14px;
     font-size: 12px;
+}
+
+/* content waits invisible while star falls */
+.reveal.falling > :not(.star-stage) {
+    visibility: hidden;
+}
+
+.reveal.landed .card {
+    animation: burst-in 0.5s cubic-bezier(0.3, 1.5, 0.5, 1);
+}
+
+.reveal.landed .reveal-headline, .reveal.landed .reveal-sub {
+    animation: fade-in 0.4s ease-out;
+}
+
+.reveal.flash::backdrop {
+    animation: flash 0.5s ease-out;
+}
+
+@keyframes burst-in {
+    from {
+        transform: scale(0);
+        filter: brightness(3);
+        opacity: 0;
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+}
+
+@keyframes flash {
+    from {
+        background: color-mix(in srgb, var(--c) 55%, var(--page));
+    }
+}
+
+.star-stage, .fx {
+    position: absolute;
+    left: 50%;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+}
+
+.comet, .dust {
+    position: absolute;
+    animation: comet var(--fall) cubic-bezier(0.35, 0, 0.75, 1) forwards;
+}
+
+@keyframes comet {
+    from {
+        transform: translate(340px, -340px) scale(0.5);
+        opacity: 0;
+    }
+
+    12% {
+        opacity: 1;
+    }
+
+    to {
+        transform: translate(0, 0) scale(1.15);
+        opacity: 1;
+    }
+}
+
+.comet-head {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    font-family: var(--pixel-font);
+    font-size: 54px;
+    line-height: 1;
+    color: #ffffff;
+    text-shadow: 0 0 10px var(--c), 0 0 28px var(--c), 0 0 50px var(--c);
+    animation: twinkle 0.24s steps(2) infinite;
+}
+
+@keyframes twinkle {
+    50% {
+        transform: translate(-50%, -50%) scale(0.85) rotate(20deg);
+    }
+}
+
+.comet-tail {
+    position: absolute;
+    left: 0;
+    top: -2px;
+    width: 280px;
+    height: 4px;
+    transform-origin: 0 50%;
+    transform: rotate(-45deg);
+    background: linear-gradient(90deg, #ffffff, var(--c) 18%, transparent);
+    filter: drop-shadow(0 0 6px var(--c));
+    animation: tail var(--fall) ease-in forwards;
+}
+
+.comet-tail.wide {
+    top: -9px;
+    height: 18px;
+    opacity: 0.35;
+    filter: blur(6px);
+}
+
+@keyframes tail {
+    from {
+        width: 120px;
+    }
+
+    55% {
+        width: 300px;
+    }
+
+    to {
+        width: 90px;
+    }
+}
+
+.dust {
+    animation-timing-function: linear;
+    animation-delay: calc(var(--i) * 70ms);
+}
+
+.dust span {
+    position: absolute;
+    transform:  translate(-50%, -50%);
+    font-size: calc(18px - var(--i) * 2px);
+    color: var(--c);
+    opacity: calc(0.9 - var(--i) * 0.13);
+    text-shadow: 0 0 6px var(--c);
+}
+
+.ring {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--c);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 20px var(--c);
+    animation: ring 0.6s ease-out forwards;
+}
+
+@keyframes ring {
+    to {
+        width: 420px;
+        height: 420px;
+        border-width: 1px;
+        opacity: 0;
+    }
+}
+
+.spark {
+    position: absolute;
+    font-family: var(--pixel-font);
+    font-size: var(--s);
+    line-height: 1;
+    color: var(--c);
+    text-shadow: 0 0 8px var(--c);
+    animation: spark 0.8s cubic-bezier(0.2, 0.7, 0.3, 1) forwards;
+}
+
+@keyframes spark {
+    from {
+        transform: translate(-50%, -50%) scale(0.3);
+        opacity: 1;
+    }
+
+    to {
+        transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(1) rotate(var(--r));
+        opacity: 0;
+    }
 }
 
 .card-rarity {

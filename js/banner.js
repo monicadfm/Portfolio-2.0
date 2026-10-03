@@ -106,6 +106,15 @@ const revealSub = document.getElementById("revealSub");
 const revealCard = document.getElementById("revealCard");
 const pullAgainBtn = document.getElementById("pullAgainBtn");
 const revealBriefBtn = document.getElementById("revealBriefBtn");
+const starStage = document.getElementById("starStage");
+const revealFx = document.getElementById("revealFx");
+const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)");
+
+const FALL_TIME = 1260;
+const SPARKS = { common: 10, rare: 12, epic: 14, legendary: 20, mythic: 28 };
+const GLYPHS = ["✦", "♡", "✧", "♥"];
+
+let fallTimer = null;
 
 const CELEBRATIONS = {
     legendary: "lucky pull! pity reset ♡",
@@ -135,6 +144,77 @@ function showReveal(project) {
     if (!revealDialog.open) {
         revealDialog.showModal();
     }
+
+    if (!reduceMotion.matches) {
+        dropStar();
+    }
+}
+
+function buildStar () {
+    starStage.replaceChildren();
+
+    for (let i = 6; i >= 1; i--) {
+        const dust = makeElement("div", "dust");
+
+        dust.style.setProperty("--i", i);
+        dust.append(makeElement("span", "", i % 2 ? "✦" : "·"));
+        starStage.append(dust);
+    }
+
+    const comet = makeElement("div", "comet");
+
+    comet.append(
+        makeElement("span", "comet-tail wide"),
+        makeElement("span", "comet-tail"),
+        makeElement("span", "comet-head", "✦")
+    );
+
+    starStage.append(comet);
+}
+
+function burst(rarity) {
+    const count = SPARKS[rarity];
+
+    revealFx.replaceChildren(makeElement("span", "ring"));
+
+    for (let i = 0; i < count; i++) {
+        const angle = (i / count) * Math.PI * 2 + Math.random() * 0.4;
+        const distance = 110 + Math.random() * 110;
+        const spark = makeElement("span", "spark", GLYPHS[i % GLYPHS.length]);
+
+        spark.style.setProperty("--x", Math.cos(angle) * distance + "px");
+        spark.style.setProperty("--y", Math.sin(angle) * distance + "px");
+        spark.style.setProperty("--r", Math.random() * 360 - 180 + "deg");
+        spark.style.setProperty("--s", 14 + Math.random() * 14 + "px");
+        revealFx.append(spark);
+    }
+}
+
+function dropStar() {
+    const centerY = revealCard.offsetTop + revealCard.offsetHeight / 2;
+
+    starStage.style.top = centerY + "px";
+    revealFx.style.top = centerY + "px";
+    starStage.style.setProperty("--fall", FALL_TIME + "ms");
+
+    revealDialog.classList.remove("landed", "flash");
+    revealDialog.classList.add("falling");
+    buildStar();
+
+    fallTimer = setTimeout(landStar, FALL_TIME);
+}
+
+function landStar() {
+    clearTimeout(fallTimer);
+    fallTimer = null;
+
+    starStage.replaceChildren();
+    revealDialog.classList.remove("falling");
+    revealDialog.classList.add("landed");
+    revealDialog.classList.toggle("flash", isHighRarity(lastPull.rarity));
+
+    burst(lastPull.rarity);
+    pullAgainBtn.focus();
 }
 
 function pull() {
@@ -169,18 +249,21 @@ revealBriefBtn.addEventListener("click", openPulledBriefing);
 revealCard.addEventListener("click", openPulledBriefing);
 
 revealDialog.addEventListener("click", function (event) {
-    if (event.target === revealDialog) {
-        revealDialog.close();
+    if (fallTimer) {
+        landStar();
+        return;
     }
-});
 
-revealDialog.addEventListener("click", function (event) {
     if (event.target === revealDialog) {
         revealDialog.close();
     }
 });
 
 revealDialog.addEventListener("close", function () {
+    clearTimeout(fallTimer);
+    fallTimer = null;
+    starStage.replaceChildren();
+    revealDialog.classList.remove("falling");
     highlightCard(lastPull);
 });
 
