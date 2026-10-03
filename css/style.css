@@ -305,6 +305,49 @@ section {
 section {
     min-height: 70vh;
 }
+.window {
+    min-width: 0;
+    background: var(--card);
+    border: 2px solid var(--border);
+    box-shadow: 5px 5px 0 var(--shadow);
+}
+
+.window-bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 6px 4px 10px;
+    background: linear-gradient(90deg, var(--wine), var(--pink));
+    color: #ffffff;
+    font-family: var(--pixel-font);
+    font-size: 13px;
+    user-select: none;
+}
+
+.window-title {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.window-btn {
+    display: grid;
+    place-items: center;
+    width: 18px;
+    height: 16px;
+    border: 1px solid #ffffff;
+    background: var(--card);
+    color: var(--pink);
+    font-family: var(--tiny-font);
+    font-size: 10px;
+    line-height: 1;
+}
+
+.window-body {
+    padding: 16px 18px;
+}
 
 footer {
     display: flex;
