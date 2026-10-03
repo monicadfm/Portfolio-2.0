@@ -26,6 +26,11 @@ const PROJECTS = [
             "Admin tools with an audit log of every action",
             "Mobile app with daily rewards and push notifications"
         ],
+        architecture: [
+            [{ name: "Web client", detail: "HTML · CSS · JS" }, { name: "MAUI app", detail: "mobile" }],
+            [{ name: "Web API", detail: "ASP.NET Core" }],
+            [{ name: "Database", detail: "SQL Server" }]
+        ],
         repo: "https://github.com/monicadfm/WishBound"
     },
     {
@@ -41,6 +46,11 @@ const PROJECTS = [
             "Start menu",
             "Plain JavaScript, no frameworks"
         ],
+        architecture: [
+            [{ name: "Player", detail: "keyboard" }],
+            [{ name: "Game", detail: "JavaScript" }],
+            [{ name: "Screen", detail: "HTML · CSS" }]
+        ],
         repo: "https://github.com/monicadfm/Sidescroller-Game-Code",
         demo: "https://monicadfm.github.io/Sidescroller-Game-Code/Menu/index.html"
     },
@@ -55,6 +65,11 @@ const PROJECTS = [
             "Responds to commands in Discord servers",
             "Built on the Discord API"
         ],
+        architecture: [
+            [{ name: "Server", detail: "Discord" }],
+            [{ name: "Bot", detail: "Python" }],
+            [{ name: "Reply", detail: "Discord API" }]
+        ],
         repo: "https://github.com/monicadfm/Python-Discord-Bot"
     },
     {
@@ -67,6 +82,11 @@ const PROJECTS = [
         features: [
             "Classic grid movement",
             "The snake grows every time it eats"
+        ],
+        architecture: [
+            [{ name: "Player", detail: "keyboard" }],
+            [{ name: "Game", detail: "Python" }],
+            [{ name: "Score", detail: "on screen" }]
         ],
         repo: "https://github.com/monicadfm/Python-Snake-Game"
     },
@@ -82,6 +102,11 @@ const PROJECTS = [
             "The computer picks at random",
             "Runs in the terminal"
         ],
+        architecture: [
+            [{ name: "You", detail: "choice" }],
+            [{ name: "CPU", detail: "random" }],
+            [{ name: "Result", detail: "win / lose / draw" }]
+        ],
         repo: "https://github.com/monicadfm/RPS_python"
     },
     {
@@ -94,6 +119,11 @@ const PROJECTS = [
         features: [
             "Simulates dice rolls",
             "A random result every roll"
+        ],
+        architecture: [
+            [{ name: "Input", detail: "roll" }],
+            [{ name: "Dice", detail: "random" }],
+            [{ name: "Result", detail: "number" }]
         ],
         repo: "https://github.com/monicadfm/Python-Dice-Roll"
     }

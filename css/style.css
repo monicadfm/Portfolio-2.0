@@ -1214,6 +1214,67 @@ body:not(.front) .side.frontend, body.front .side.backend {
     color: var(--font-sec);
 }
 
+.arch {
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+    padding: auto;
+    padding: 14px;
+    border: 1.5px dashed var(--c);
+    background: var(--page);
+}
+
+.arch-column {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.arch-node {
+    min-width: 110px;
+    padding: 8px 10px;
+    border: 1.5px solid var(--c);
+    background: var(--card);
+    text-align: center;
+}
+
+.arch-node b {
+    display: block;
+    font-family: var(--tiny-font);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--c);
+}
+
+.arch-node small {
+    font-family: var(--pixel-font);
+    font-size: 13px;
+    color: var(--font-sec);
+}
+
+.wire {
+    position: relative;
+    flex: 1 0 34px;
+    height: 2px;
+    background: repeating-linear-gradient(90deg, var(--c) 0 4px, transparent 4px 7px);
+}
+
+.wire::after {
+    content: "♥";
+    position: absolute;
+    top: -10px;
+    left: 0;
+    font-size: 12px;
+    color: var(--c);
+    animation: packet 1.6s linear infinite;
+}
+
+@keyframes packet {
+    to { left: calc(100% - 8px); }
+}
+
 .quest-features {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));

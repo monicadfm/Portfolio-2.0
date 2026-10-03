@@ -7,6 +7,7 @@ const questTags = document.getElementById("questTags");
 const questLinks = document.getElementById("questLinks");
 const questFile = document.getElementById("questFile");
 const questFeatures = document.getElementById("questFeatures");
+const questArch = document.getElementById("questArch");
 
 function makeLink(text, url, className) {
     const link = makeElement("a", className, text);
@@ -16,6 +17,31 @@ function makeLink(text, url, className) {
     link.rel = "noopener";
 
     return link;
+}
+
+function renderArchitecture(columns) {
+    questArch.replaceChildren();
+
+    columns.forEach(function (column, index) {
+        if (index > 0) {
+            questArch.append(makeElement("span", "wire"));
+        }
+
+        const stack = makeElement("div", "arch-column");
+
+        for (const node of column) {
+            const box = makeElement("div", "arch-node");
+
+            box.append(
+                makeElement("b", "", node.name),
+                makeElement("small", "", node.detail)
+            );
+
+            stack.append(box);
+        }
+
+        questArch.append(stack);
+    });
 }
 
 function openQuest(project) {
@@ -35,6 +61,8 @@ function openQuest(project) {
 
     questStatus.textContent = "status: " + project.status;
     questDescription.textContent = project.description;
+
+    renderArchitecture(project.architecture);
 
     questFeatures.replaceChildren();
 
