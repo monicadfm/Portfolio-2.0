@@ -5,6 +5,7 @@ const questStatus = document.getElementById("questStatus");
 const questDescription = document.getElementById("questDescription");
 const questTags = document.getElementById("questTags");
 const questLinks = document.getElementById("questLinks");
+const questFile = document.getElementById("questFile");
 
 function makeLink(text, url, className) {
     const link = makeElement("a", className, text);
@@ -25,13 +26,39 @@ function openQuest(project) {
     );
 
     questName.textContent = project.name;
-    questStatus.textContent = "statys: " + project.status;
+
+    const fileNumber = String(PROJECTS.indexOf(project) + 1).padStart(2, "0");
+    const fileTotal = String(PROJECTS.length).padStart(2, "0");
+
+    questFile.textContent = "— file " + fileNumber + "/" + fileTotal;
+
+    questStatus.textContent = "status: " + project.status;
     questDescription.textContent = project.description;
+
+    questTags.replaceChildren();
+
+    for (const tag of project.tags) {
+        questTags.append(makeElement("span", "", tag));
+    }
+
+    questLinks.replaceChildren();
+
+    if (project.repo) {
+        questLinks.append(makeLink("▸ GitHub ↗", project.repo, "btn primary"));
+    }
+
+    if (project.demo) {
+        questLinks.append(makeLink("▸ play game ↗", project.demo, "btn"));
+    }
+
+    if (!project.repo && !project.demo) {
+        questLinks.append(makeElement("span", "quest-status", "source code coming soon"));
+    }
 
     questDialog.showModal();
 }
 
-// one listener per card, future proof
+// one listener for every card, future proof
 cardGrid.addEventListener("click", function (event) {
     const card = event.target.closest(".card[data-index]");
 
@@ -42,9 +69,9 @@ cardGrid.addEventListener("click", function (event) {
     openQuest(PROJECTS[card.dataset.index]);
 });
 
-// click outside the dimmed area
+// click on the dimmed area closes it
 questDialog.addEventListener("click", function (event) {
     if (event.target === questDialog) {
-        questDialog.closest();
+        questDialog.close();
     }
 });

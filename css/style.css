@@ -973,19 +973,19 @@ body:not(.front) .side.frontend, body.front .side.backend {
     --c: var(--common);
 }
 
-.card[data-rarity="rare"] {
+[data-rarity="rare"] {
     --c: var(--rare);
 }
 
-.card[data-rarity="epic"] {
+[data-rarity="epic"] {
     --c: var(--epic);
 }
 
-.card[data-rarity="legendary"] {
+[data-rarity="legendary"] {
     --c: var(--legendary);
 }
 
-.card[data-rarity="mythic"] {
+[data-rarity="mythic"] {
     --c: var(--mythic);
     background: linear-gradient(160deg, color-mix(in srgb, var(--mythic) 22%, var(--card)), var(--card) 65%);
 }
@@ -1222,6 +1222,14 @@ body:not(.front) .side.frontend, body.front .side.backend {
 .quest-links {
     display: flex;
     flex-wrap: wrap;
+    gap: 8px;
+}
+
+.quest-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
     gap: 8px;
     margin-top: 8px;
 }
