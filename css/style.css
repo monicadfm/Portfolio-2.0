@@ -842,6 +842,68 @@ section {
     }
 }
 
+.sides {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 22px;
+}
+
+@media (max-width: 760px) {
+    .sides {
+        grid-template-columns: 1fr;
+    }
+}
+
+.side {
+    padding: 16px;
+    background: var(--card);
+    border: 1.5px dashed color-mix(in srgb, var(--border) 60%, transparent);
+    transition: opacity 0.4s, background-color 0.4s, box-shadow 0.4s;
+}
+
+.side h3 {
+    margin-bottom: 12px;
+    color: var(--pink);
+}
+
+/* switch side lights up, other fades */
+body:not(.front) .side.backend, body.front .side.frontend {
+    background: var(--card-inner);
+    border-style: solid;
+    border-color: var(--border);
+    box-shadow: 4px 4px 0 var(--shadow);
+}
+
+body:not(.front) .side.frontend, body.front .side.backend {
+    opacity: 0.55;
+}
+
+.stickers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.stickers li {
+    padding: 3px 12px;
+    border: 1.5px solid var(--border);
+    border-radius: 999px;
+    background: linear-gradient(180deg, color-mix(in srgb, var(--pink-light) 35%, var(--card)) 0 50%, var(--card) 50%);
+    font-family: var(--pixel-font);
+    font-size: 15px;
+    transition: transform 0.15s;
+}
+
+.stickers li:hover {
+    transform: translateY(-2px) rotate(-3deg);
+    background: var(--pink);
+    color: var(--page);
+}
+
 .window {
     min-width: 0;
     background: var(--card);
