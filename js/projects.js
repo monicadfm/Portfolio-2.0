@@ -16,6 +16,7 @@ const PROJECTS = [
         rarity: "mythic",
         language: "C#",
         status: "In progress",
+        main: true,
         description: "A web and mobile platform for collecting virtual characters. Pull from limited-time banners, build a collection and grow friendship levels.",
         tags: ["ASP.NET Core", "SQL Server", ".NET MAUI", "JavaScript"],
         features: [

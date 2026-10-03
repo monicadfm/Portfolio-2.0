@@ -1168,10 +1168,9 @@ body:not(.front) .side.frontend, body.front .side.backend {
 }
 
 .quest {
-    width: min(680px, calc(100% - 32px));
+    width: min(820px, calc(100% - 32px));
     padding: 0;
-    background: var(--card);
-    border: 2px solid var(--c);
+    border-color: var(--c);
     box-shadow: 6px 6px 0 var(--c);
     color: var(--font);
 }
@@ -1188,7 +1187,8 @@ body:not(.front) .side.frontend, body.front .side.backend {
 .quest-body {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 14px;
+    padding: 22px 26px;
 }
 
 .quest-body p {
@@ -1196,7 +1196,48 @@ body:not(.front) .side.frontend, body.front .side.backend {
 }
 
 .quest-name {
-    font-size: 28px;
+    font-family: var(--name-font);
+    font-size: 44px;
+    line-height: 1;
+    color: var(--pink);
+    text-shadow: 3px 3px 0 var(--shadow);
+}
+
+.quest-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.quest-meta span {
+    padding: 2px 8px;
+    border: 1.5px solid var(--pink);
+    font-family: var(--tiny-font);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.quest-meta .quest-rarity {
+    background: var(--c);
+    border-color: var(--c);
+    color: var(--page);
+}
+
+.quest-tags {
+    display: flex;
+    flex-wrap: wrap;
+    font-family:var(--tiny-font);
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--font-sec);
+}
+
+.quest-tags span + span::before {
+    content: "·";
+    margin: 0 10px;
+    color: var(--pink);
 }
 
 .quest-status, .quest-label {
@@ -1220,7 +1261,7 @@ body:not(.front) .side.frontend, body.front .side.backend {
     overflow-x: auto;
     padding: auto;
     padding: 14px;
-    border: 1.5px dashed var(--c);
+    border: 1.5px dashed var(--pink);
     background: var(--page);
 }
 
@@ -1233,7 +1274,7 @@ body:not(.front) .side.frontend, body.front .side.backend {
 .arch-node {
     min-width: 110px;
     padding: 8px 10px;
-    border: 1.5px solid var(--c);
+    border: 1.5px solid var(--pink);
     background: var(--card);
     text-align: center;
 }
@@ -1245,7 +1286,7 @@ body:not(.front) .side.frontend, body.front .side.backend {
     font-weight: 400;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--c);
+    color: var(--pink);
 }
 
 .arch-node small {
@@ -1258,7 +1299,7 @@ body:not(.front) .side.frontend, body.front .side.backend {
     position: relative;
     flex: 1 0 34px;
     height: 2px;
-    background: repeating-linear-gradient(90deg, var(--c) 0 4px, transparent 4px 7px);
+    background: repeating-linear-gradient(90deg, var(--pink) 0 4px, transparent 4px 7px);
 }
 
 .wire::after {
@@ -1267,7 +1308,7 @@ body:not(.front) .side.frontend, body.front .side.backend {
     top: -10px;
     left: 0;
     font-size: 12px;
-    color: var(--c);
+    color: var(--pink);
     animation: packet 1.6s linear infinite;
 }
 
@@ -1278,7 +1319,7 @@ body:not(.front) .side.frontend, body.front .side.backend {
 .quest-features {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 4px 18px;
+    gap: 8px 28px;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -1294,12 +1335,12 @@ body:not(.front) .side.frontend, body.front .side.backend {
     content: "✦";
     position: absolute;
     left: 0;
-    color: var(--c);
+    color: var(--pink);
 }
 
 .quest-label {
-    margin-top: 6px;
-    color: var(--c);
+    margin-top: 10px;
+    color: var(--pink);
 }
 
 .quest-links {

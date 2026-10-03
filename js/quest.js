@@ -8,6 +8,7 @@ const questLinks = document.getElementById("questLinks");
 const questFile = document.getElementById("questFile");
 const questFeatures = document.getElementById("questFeatures");
 const questArch = document.getElementById("questArch");
+const questType = document.getElementById("questType");
 
 function makeLink(text, url, className) {
     const link = makeElement("a", className, text);
@@ -47,10 +48,8 @@ function renderArchitecture(columns) {
 function openQuest(project) {
     questDialog.dataset.rarity = project.rarity;
 
-    questRarity.replaceChildren(
-        makeElement("span", "", project.rarity),
-        makeElement("span", "", "★".repeat(RARITY_STARS[project.rarity]))
-    );
+    questRarity.textContent = project.rarity + " " + "★".repeat(RARITY_STARS[project.rarity]);
+    questType.textContent = project.main ? "main quest" : "side quest";
 
     questName.textContent = project.name;
 
@@ -59,7 +58,7 @@ function openQuest(project) {
 
     questFile.textContent = "— file " + fileNumber + "/" + fileTotal;
 
-    questStatus.textContent = "status: " + project.status;
+    questStatus.textContent = project.status;
     questDescription.textContent = project.description;
 
     renderArchitecture(project.architecture);
