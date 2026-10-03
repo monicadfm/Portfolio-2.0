@@ -2,10 +2,10 @@ const stage = document.getElementById("stage");
 const charm = document.getElementById("charm");
 const charmString = document.getElementById("charmString");
 
-const STRING_LENGTH = 85;
+const STRING_LENGTH = 140;
 const GRAVITY = 0.55;
-const STIFFNESS = 0.06;
-const DAMPING = 0.975;
+const DAMPING = 0.985;
+const REEL_IN = 0.03;
 const MAX_SPEED = 25;
 // ~40 degrees, in radians
 const MAX_TILT = 0.7;
@@ -14,7 +14,8 @@ const charmState = {
     x: 0,
     y: STRING_LENGTH,
     vx: 0,
-    vy: 0
+    vy: 0,
+    rope: STRING_LENGTH
 };
 
 const dragState = {
@@ -40,37 +41,43 @@ function drawCharm() {
     charmString.setAttribute("y2", charmState.y + 12);
 }
 
-function keepInStage() {
-    const half = charm.offsetWidth / 2;
+// a string can pull but never push
+function applyString() {
+    const anchorX = stage.clientWidth / 2;
+    const dx = charmState.x - anchorX;
+    const dy = charmState.y;
+    const distance = Math.hypot(dx, dy) || 1;
 
-    charmState.x = clamp(charmState.x, half, stage.clientWidth - half);
+    if (distance <= charmState.rope) {
+        return;
+    }
 
-    if (charmState.y < 20) {
-        charmState.y = 20;
-        charmState.vy = Math.abs(charmState.vy) * 0.3;
+    const nx = dx / distance;
+    const ny = dy / distance;
+
+    charmState.x = anchorX + nx * charmState.rope;
+    charmState.y = ny * charmState.rope;
+
+    const outward = charmState.vx * nx + charmState.vy * ny;
+
+    if (outward > 0) {
+        charmState.vx -= outward * nx;
+        charmState.vy -= outward * ny;
     }
 }
 
 function stepCharm() {
     if (!dragState.active) {
-        const anchorX = stage.clientWidth / 2;
-        const dx = charmState.x - anchorX;
-        const dy = charmState.y;
-        const distance = Math.hypot(dx, dy) || 1;
-        // a string can pull but never push
-        const stretch = Math.max(distance - STRING_LENGTH, 0);
+        charmState.rope += (STRING_LENGTH - charmState.rope) * REEL_IN;
 
         charmState.vy += GRAVITY;
-        charmState.vx -= dx / distance * stretch * STIFFNESS;
-        charmState.vy -= dy / distance * stretch * STIFFNESS;
-
         charmState.vx = clamp(charmState.vx * DAMPING, -MAX_SPEED, MAX_SPEED);
         charmState.vy = clamp(charmState.vy * DAMPING, -MAX_SPEED, MAX_SPEED);
 
         charmState.x += charmState.vx;
         charmState.y += charmState.vy;
 
-        keepInStage();
+        applyString();
     }
 
     drawCharm();
@@ -111,6 +118,8 @@ charm.addEventListener("pointermove", function (event) {
     charmState.vy = newY - charmState.y;
     charmState.x = newX;
     charmState.y = newY;
+
+    charmState.rope = Math.max(STRING_LENGTH, Math.hypot(charmState.x - stage.clientWidth / 2, charmState.y));
 });
 
 function endDrag() {
@@ -128,5 +137,6 @@ if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
 else {
     // swing from start
     charmState.x = stage.clientWidth / 2 + 80;
+    charmState.rope = Math.hypot(80, STRING_LENGTH);
     requestAnimationFrame(stepCharm);
 }

@@ -76,7 +76,7 @@ body {
     background-position: 0 0, 11px 11px;
     color: var(--font);
     font-family: var(--text-font);
-    font-size: 16px;
+    font-size: 17px;
     line-height: 1.65;
     transition: background-color 0.5s, color 0.5s;
 }
@@ -97,13 +97,13 @@ h1, h2 {
 }
 
 h1 {
-    font-size: clamp(64px, 10vw, 125px);
+    font-size: clamp(72px, 11vw, 150px);
     margin-block: 10px 8px;
     text-shadow: 0 0 22px color-mix(in srgb, var(--pink) 55%, transparent), 4px 4px 0 var(--shadow);
 }
 
 h2 {
-    font-size: clamp(40px, 6vw, 64px);
+    font-size: clamp(46px, 6.5vw, 76px);
     margin-block: 6px 16px;
     text-shadow: 3px 3px 0 var(--shadow);
 }
@@ -111,7 +111,7 @@ h2 {
 h3 {
     font-family: var(--pixel-font);
     font-weight: 400;
-    font-size: 17px;
+    font-size: 19px;
     margin: 0;
 }
 
@@ -135,7 +135,7 @@ a:hover {
 
 .eyebrow {
     font-family: var(--tiny-font);
-    font-size: 11px;
+    font-size: 13px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--font-sec);
@@ -143,7 +143,7 @@ a:hover {
 
 .lede {
     max-width: 62ch;
-    font-size: 17px;
+    font-size: 19px;
     color: var(--font-sec);
 }
 
@@ -172,14 +172,14 @@ nav {
     flex-wrap: wrap;
     gap: 14px;
     padding-block: 10px;
-    padding-inline: max(20px, calc((100% - 1140px) / 2));
+    padding-inline: max(20px, calc((100% - 1240px) / 2));
     background: var(--card);
     border-bottom: 2px solid var(--border);
 }
 
 .logo {
     font-family: var(--name-font);
-    font-size: 28px;
+    font-size: 34px;
     line-height: 1;
     color: var(--pink);
     text-decoration: none;
@@ -200,7 +200,7 @@ nav ul a {
     padding: 4px 8px;
     border: 1px solid transparent;
     font-family: var(--tiny-font);
-    font-size: 11px;
+    font-size: 13px;
     letter-spacing: 0.1em;
     color: var(--font-sec);
     text-decoration: none;
@@ -222,7 +222,7 @@ nav ul a:hover {
     background: transparent;
     color: var(--font);
     font-family: var(--tiny-font);
-    font-size: 10px;
+    font-size: 12px;
     letter-spacing: 0.08em;
     cursor: pointer;
 }
@@ -288,7 +288,7 @@ nav ul a:hover {
 }
 
 main, footer {
-    max-width: 1180px;
+    max-width: 1280px;
     margin-inline: auto;
     padding-inline: 20px;
 }
@@ -323,6 +323,7 @@ main, footer {
     top: 150px;
     left: calc(50% - 125px);
     width: 250px;
+    z-index: 2;
     transform-origin: 50% 0;
     cursor: grab;
     user-select: none;
@@ -388,7 +389,7 @@ main, footer {
 .charm-role {
     margin: 6px 0 0;
     font-family: var(--tiny-font);
-    font-size: 10px;
+    font-size: 12px;
     letter-spacing: 0.12em;
 }
 
@@ -397,7 +398,7 @@ main, footer {
     padding-top: 8px;
     border-top: 1px dashed var(--border);
     font-family: var(--tiny-font);
-    font-size: 9px;
+    font-size: 11px;
     letter-spacing: 0.15em;
     color: var(--font-sec);
 }
@@ -414,13 +415,13 @@ main, footer {
 
 .stage-hint {
     position: absolute;
-    bottom: -30px;
+    bottom: -100px;
     left: 0;
     right: 0;
     margin: 0;
     text-align: center;
     font-family: var(--tiny-font);
-    font-size: 10px;
+    font-size: 12px;
     letter-spacing: 0.2em;
     color: var(--font-sec);
 }
@@ -458,13 +459,20 @@ main, footer {
 
 .hero-stage {
     min-height: 440px;
+    margin-top: -80px;
+}
+
+@media (max-width: 860px) {
+    .hero-stage {
+        margin-top: 0;
+    }
 }
 
 .command {
     min-height: 1.6em;
     margin: 0;
     font-family: var(--pixel-font);
-    font-size: 14px;
+    font-size: 16px;
     color: var(--font-sec);
 }
 
@@ -476,7 +484,7 @@ main, footer {
 .caret {
     display: inline-block;
     width: 8px;
-    height: 15px;
+    height: 17px;
     margin-left: 4px;
     vertical-align: -2px;
     background: var(--pink);
@@ -510,7 +518,7 @@ main, footer {
 .role {
     margin: 0;
     font-family: var(--tiny-font);
-    font-size: 13px;
+    font-size: 15px;
     letter-spacing: 0.12em;
 }
 
@@ -528,12 +536,12 @@ main, footer {
 
 .btn {
     display: inline-block;
-    padding: 10px 16px;
+    padding: 12px 20px;
     border: 2px solid var(--border);
     background: var(--card);
     color: var(--font);
     font-family: var(--tiny-font);
-    font-size: 12px;
+    font-size: 14px;
     letter-spacing: 0.08em;
     text-decoration: none;
     box-shadow: 3px 3px 0 var(--shadow);
@@ -563,7 +571,7 @@ main, footer {
     gap: 10px;
     margin-top: 22px;
     font-family: var(--tiny-font);
-    font-size: 11px;
+    font-size: 13px;
     letter-spacing: 0.06em;
 }
 
@@ -612,7 +620,7 @@ body.front .switch button::after {
 
 .switch-note {
     font-family: var(--pixel-font);
-    font-size: 12px;
+    font-size: 14px;
     letter-spacing: 0;
     color: var(--font-sec);
 }
@@ -641,7 +649,7 @@ section {
     background: linear-gradient(90deg, var(--wine), var(--pink));
     color: #ffffff;
     font-family: var(--pixel-font);
-    font-size: 13px;
+    font-size: 15px;
     user-select: none;
 }
 
@@ -662,7 +670,7 @@ section {
     background: var(--card);
     color: var(--pink);
     font-family: var(--tiny-font);
-    font-size: 10px;
+    font-size: 12px;
     line-height: 1;
 }
 
@@ -678,7 +686,7 @@ footer {
     padding-block: 24px 48px;
     border-top: 1px dashed var(--border);
     font-family: var(--pixel-font);
-    font-size: 13px;
+    font-size: 15px;
     color: var(--font-sec);
 }
 
