@@ -17,7 +17,8 @@ const PROJECTS = [
         language: "C#",
         status: "In progress",
         description: "A web and mobile platform for collecting virtual characters. Pull from limited-time banners, build a collection and grow friendship levels.",
-        tags: ["ASP.NET Core", "SQL Server", ".NET MAUI", "JavaScript"]
+        tags: ["ASP.NET Core", "SQL Server", ".NET MAUI", "JavaScript"],
+        repo: "https://github.com/monicadfm/WishBound"
     },
     {
         name: "Sidescroller",
@@ -25,7 +26,9 @@ const PROJECTS = [
         language: "JavaScript",
         status: "Complete",
         description: "A roguelike sidescroller built with JavaScript, HTML and CSS. Desktop only.",
-        tags: ["JavaScript", "HTML", "CSS"]
+        tags: ["JavaScript", "HTML", "CSS"],
+        repo: "https://github.com/monicadfm/Sidescroller-Game-Code",
+        demo: "https://monicadfm.github.io/Sidescroller-Game-Code/Menu/index.html"
     },
     {
         name: "Discord Bot",
@@ -33,7 +36,8 @@ const PROJECTS = [
         language: "Python",
         status: "Complete",
         description: "A bot for Discord servers, written in Python.",
-        tags: ["Python", "Discord API"]
+        tags: ["Python", "Discord API"],
+        repo: "https://github.com/monicadfm/Python-Discord-Bot"
     },
     {
         name: "Snake",
@@ -41,7 +45,8 @@ const PROJECTS = [
         language: "Python",
         status: "Complete",
         description: "The classic snake game, built in Python.",
-        tags: ["Python"]
+        tags: ["Python"],
+        repo: "https://github.com/monicadfm/Python-Snake-Game"
     },
     {
         name: "Rock Paper Scissors",
@@ -49,7 +54,8 @@ const PROJECTS = [
         language: "Python",
         status: "Complete",
         description: "Play against the computer from the terminal.",
-        tags: ["Python"]
+        tags: ["Python"],
+        repo: "https://github.com/monicadfm/RPS_python"
     },
     {
         name: "Dice Roll",
@@ -57,7 +63,8 @@ const PROJECTS = [
         language: "Python",
         status: "Complete",
         description: "A small dice-rolling simulator.",
-        tags: ["Python"]
+        tags: ["Python"],
+        repo: "https://github.com/monicadfm/Python-Dice-Roll"
     }
 ];
 
