@@ -1,5 +1,6 @@
 const cardGrid = document.getElementById("cardGrid");
 const loadingCard = document.getElementById("loadingCard");
+const filterButtons = document.querySelectorAll(".filter");
 
 const RARITY_STARS = {
     common: 1,
@@ -111,5 +112,23 @@ function renderCards() {
         cardGrid.insertBefore(createCard(project, index), loadingCard);
     });
 }
+
+function filterCards(language) {
+    cardGrid.querySelectorAll(".card[data-language]").forEach(function (card) {
+        card.hidden = language !== "all" && card.dataset.language !== language;
+    });
+
+    loadingCard.hidden = language !== "all";
+}
+
+filterButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+        filterButtons.forEach(function (other) {
+            other.setAttribute("aria-pressed", other === button);
+        });
+
+        filterCards(button.dataset.filter);
+    });
+});
 
 renderCards();

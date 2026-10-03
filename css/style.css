@@ -908,6 +908,39 @@ body:not(.front) .side.frontend, body.front .side.backend {
     color: var(--page);
 }
 
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 25px;
+}
+
+.filter {
+    padding: 10px 12px;
+    background: var(--card);
+    border: 2px solid var(--pink);
+    color: var(--font);
+    font-family: var(--tiny-font);
+    font-size: 12px;
+    line-height: 1;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.filter:hover {
+    background: var(--card-inner);
+}
+
+.filter[aria-pressed="true"] {
+    background: var(--pink);
+    color: var(--page);
+}
+
+.card[hidden] {
+    display: none;
+}
+
 .cards {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
