@@ -1549,6 +1549,153 @@ body:not(.front) .side.frontend, body.front .side.backend {
     }
 }
 
+.cart-wrap {
+    max-width: 560px;
+    margin-inline: auto;
+    /* clip-path to cut box shadow, parent makes it follow the cut shape */
+    filter: drop-shadow(6px 6px 0 var(--shadow));
+}
+
+.cart {
+    padding: 3px;
+    background: var(--pink);
+    border-radius: 10px 0 6px 6px;
+    clip-path: polygon(0 0, calc(100% - 38px) 0, 100% 38px, 100% 100%, 0 100%);
+}
+
+.cart-inner {
+    padding: 14px 18px 18px;
+    background: linear-gradient(180deg, var(--card-inner), var(--card));
+    border-radius: 8px 0 4px 4px;
+    clip-path: polygon(0 0, calc(100% - 37px) 0, 100% 37px, 100% 100%, 0 100%);
+}
+
+.cart-top {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 0 44px 14px 0;
+}
+
+.cart-grip {
+    flex: 1;
+    height: 20px;
+    background: repeating-linear-gradient(90deg, color-mix(in srgb, var(--pink) 40%, transparent) 0 3px, transparent 3px 9px);
+}
+
+.cart-arrow {
+    font-family: var(--pixel-font);
+    font-size: 14px;
+    color: var(--pink);
+}
+
+.cart-label {
+    padding: 20px 22px;
+    background: radial-gradient(circle, color-mix(in srgb, var(--pink) 18%, transparent) 1.2px, transparent 1.6px) 0 0 / 14px 14px,
+        linear-gradient(160deg, color-mix(in srgb, var(--pink) 26%, var(--card)), var(--card) 70%);
+    border: 2px solid var(--pink);
+    border-radius: 8px;
+    box-shadow: inset 0 0 0 4px var(--card), inset 0 0 0 5px color-mix(in srgb, var(--pink) 45%, transparent);
+}
+
+.cart-label h2 {
+    margin-bottom: 8px;
+}
+
+.cart-strip {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 12px;
+    font-family: var(--tiny-font);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--font-sec);
+}
+
+.cart-pins {
+    height: 18px;
+    margin: 14px 36px 0;
+    background: repeating-linear-gradient(90deg, var(--pink) 0 8px, transparent 8px 13px);
+    opacity: 0.75;
+    clip-path: polygon(4% 0, 96% 0, 100% 100%, 0 100%);
+}
+
+.slots {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.slot {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr) auto;
+    gap: 14px;
+    align-items: center;
+    padding: 10px 12px;
+    background: var(--card-inner);
+    border: 1.5px solid var(--pink);
+    color: var(--font);
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+}
+
+a.slot:hover, .slot:focus-within {
+    background: var(--pink);
+    color: var(--page);
+}
+
+.slot-icon {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border: 1.5px solid currentColor;
+    font-family: var(--pixel-font);
+    font-size: 18px;
+}
+
+.slot-text {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.slot-text b {
+    font-family: var(--tiny-font);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.slot-text span {
+    font-family: var(--pixel-font);
+    font-size: 16px;
+    overflow-wrap: anywhere;
+}
+
+.slot-go, .slot-copy {
+    font-family: var(--tiny-font);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+}
+
+.slot-copy {
+    padding: 6px 10px;
+    background: var(--card);
+    border: 1.5px solid var(--pink);
+    color: var(--font);
+    cursor: pointer;
+}
+
+.slot-copy:hover {
+    background: var(--font);
+    color: var(--page);
+}
+
 .window {
     min-width: 0;
     background: var(--card);
