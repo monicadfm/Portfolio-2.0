@@ -1642,7 +1642,7 @@ body:not(.front) .side.frontend, body.front .side.backend {
     transition: background 0.2s, color 0.2s;
 }
 
-a.slot:hover, .slot:focus-within {
+a.slot:hover, a.slot:focus-visible, .slot:has(.slot-copy:focus-visible) {
     background: var(--pink);
     color: var(--page);
 }
@@ -1694,6 +1694,16 @@ a.slot:hover, .slot:focus-within {
 .slot-copy:hover {
     background: var(--font);
     color: var(--page);
+}
+
+.slot.saved {
+    animation: saved 0.6s ease-out;
+}
+
+@keyframes saved {
+    30% {
+        box-shadow: 0 0 0 4px var(--pink), 0 0 30px var(--pink);
+    }
 }
 
 .contact-row {
@@ -1996,7 +2006,7 @@ a.slot:hover, .slot:focus-within {
 }
 
 .cable span + span {
-    animation-delay: 1.3s;
+    animation-delay: -1.3s;
 }
 
 @keyframes cable-packet {
