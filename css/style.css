@@ -638,11 +638,6 @@ section {
     padding-block: 48px;
 }
 
-/* temp scroll test */
-section {
-    min-height: 70vh;
-}
-
 .section-head {
     display: flex;
     flex-wrap: wrap;
@@ -1407,6 +1402,151 @@ body:not(.front) .side.frontend, body.front .side.backend {
 
 .wip-list .internship {
     color: var(--red);
+}
+
+.path {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 0 14px;
+    margin: 48px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* the dashed road behind the diamonds */
+.path::before {
+    content: "";
+    position: absolute;
+    left: 4%;
+    right: 4%;
+    top: 26px;
+    height: 3px;
+    background: repeating-linear-gradient(90deg, var(--pink) 0 10px, transparent 10px 16px);
+}
+
+.point {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    min-width: 0;
+    text-align: center;
+}
+
+.marker {
+    position: relative;
+    display: grid;
+    place-items: center;
+    flex: 0 0 52px;
+    width: 52px;
+    height: 52px;
+    background: var(--card);
+    border: 2px solid var(--pink);
+    color: var(--pink);
+    font-family: var(--pixel-font);
+    font-size: 20px;
+    transform: rotate(45deg);
+    transition: transform 0.3s;
+}
+
+.marker span {
+    transform: rotate(-45deg);
+}
+
+.point:hover .marker {
+    transform: rotate(225deg);
+}
+
+.point.now .marker {
+    background: var(--pink);
+    color: var(--page);
+    box-shadow: 0 0 0 5px color-mix(in srgb, var(--pink) 30%, transparent), 0 0 24px var(--pink);
+    animation: pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    50% {
+        box-shadow: 0 0 0 10px color-mix(in srgb, var(--pink) 10%, transparent), 0 0 34px var(--pink);
+    }
+}
+
+.point.lock .marker {
+    border-style: dashed;
+    color: var(--font-sec);
+}
+
+.point-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 0;
+}
+
+.when {
+    font-family: var(--tiny-font);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--pink);
+}
+
+.point.lock .when {
+    color: var(--font-sec);
+}
+
+.point h3 {
+    margin: 2px 0 4px;
+    font-size: 18px;
+    line-height: 1.3;
+}
+
+.point p {
+    margin: 0;
+    font-size: 15px;
+    color: var(--font-sec);
+}
+
+.here {
+    margin-top: 6px;
+    padding: 0 6px;
+    background: var(--red);
+    color: #ffffff;
+    font-family: var(--tiny-font);
+    font-size: 11px;
+    line-height: 1.6;
+    animation: blink 1s steps(1) infinite;
+}
+
+/* road turns vertical on small screens */
+@media (max-width: 860px) {
+    .path {
+        display: flex;
+        flex-direction: column;
+        gap: 22px;
+    }
+
+    .path::before {
+        left: 25px;
+        right: auto;
+        top: 10px;
+        bottom: 10px;
+        width: 3px;
+        height: auto;
+        background: repeating-linear-gradient(180deg, var(--pink) 0 10px, transparent 10px 16px);
+    }
+
+    .point {
+        display: grid;
+        grid-template-columns: 52px minmax(0, 1fr);
+        gap: 18px;
+        align-items: start;
+        text-align: left;
+    }
+
+    .point-text {
+        align-items: flex-start;
+    }
 }
 
 .window {
