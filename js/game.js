@@ -11,7 +11,7 @@ const bBtn = document.getElementById("bBtn");
 
 const GROUND = 60;
 const PLAYER_POS = 18;
-const GRAVITY = 0.32;
+const GAME_GRAVITY = 0.32;
 const JUMP = -4.1;
 const SPEED = 1.3;
 
@@ -111,7 +111,7 @@ function tick(now) {
     game.last = now;
     game.frame += time;
 
-    game.vy += GRAVITY * time;
+    game.vy += GAME_GRAVITY * time;
     game.y = Math.min(game.y + game.vy * time, 0);
 
     if (game.y === 0) {
