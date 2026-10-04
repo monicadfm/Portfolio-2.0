@@ -249,6 +249,11 @@ revealBriefBtn.addEventListener("click", openPulledBriefing);
 revealCard.addEventListener("click", openPulledBriefing);
 
 revealDialog.addEventListener("click", function (event) {
+    // button click no longer skipping animation
+    if (event.target.closest("button")) {
+        return;
+    }
+
     if (fallTimer) {
         landStar();
         return;
