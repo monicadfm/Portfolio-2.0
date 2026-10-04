@@ -402,20 +402,48 @@
                     <span class="sticker sticker-c" aria-hidden="true">1up</span>
                 </div>
 
-                <div class="console-box" aria-hidden="true">
-                    <div class="screen">
-                        <p><b>&gt;</b> load save file...</p>
-                        <p><b>&gt;</b> player: mónica moura</p>
-                        <p><b>&gt;</b> class: full-stack dev</p>
-                        <p><b>&gt;</b> quest: find an internship</p>
-                        <p><b>&gt;</b> party: 1/2</p>
-                        <p class="press">waiting for player 2_</p>
+                <div class="cable" aria-hidden="true"><span>♥</span><span>♥</span></div>
+
+                <div class="console-box">
+                    <div class="console-top" aria-hidden="true">
+                        <span class="led"></span>
+                        <span>power</span>
                     </div>
+
+                    <div class="screen" id="gameScreen">
+                        <canvas id="gameCanvas" width="120" height="68" aria-label="Mini game: jump over the bugs"></canvas>
+                        <div class="screen-text" id="bootText">
+                            <p><b>&gt;</b> load save file...</p>
+                            <p><b>&gt;</b> player: mónica moura</p>
+                            <p><b>&gt;</b> class: full-stack dev</p>
+                            <p><b>&gt;</b> quest: find an internship</p>
+                            <p class="press">waiting for player 2_</p>
+                        </div>
+                        <span class="score" id="gameScore" hidden>0</span>
+                        <div class="game-msg" id="gameMsg" hidden>
+                            <b>game over</b>
+                            <span id="gameMsgText"></span>
+                        </div>
+                    </div>
+
                     <div class="console-controls">
-                        <span class="dpad"></span>
-                        <span class="ab"><span>b</span><span>a</span></span>
+                        <span class="dpad" aria-hidden="true"></span>
+                        <span class="start-select">
+                            <button class="pill console-btn" id="selectBtn" type="button">select</button>
+                            <button class="pill console-btn" id="startBtn" type="button">start</button>
+                        </span>
+                        <span class="ab">
+                            <button class="console-btn" id="bBtn" type="button" aria-label="Jump">b</button>
+                            <button class="console-btn" id="aBtn" type="button" aria-label="Jump">a</button>
+                        </span>
                     </div>
-                    <p class="console-name">heart.sys ♡ pocket</p>
+                    
+                    <div class="console-bottom" aria-hidden="true">
+                        <p class="console-name">heart.sys ♡ pocket</p>
+                        <span class="speaker"></span>
+                    </div>
+
+                    <span class="console-sticker" aria-hidden="true">press start ♡</span>
                 </div>
             </div>
         </section>

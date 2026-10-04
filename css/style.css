@@ -1698,25 +1698,32 @@ a.slot:hover, .slot:focus-within {
 
 .contact-row {
     display: grid;
-    grid-template-columns: minmax(0, 420px) minmax(0, 560px);
+    grid-template-columns: minmax(0, 460px) 128px minmax(0, 560px);
+    grid-template-areas: "console cable cart";
     justify-content: center;
     align-items: center;
-    gap: 48px;
+}
+
+.cart-wrap {
+    grid-area: cart;
 }
 
 /* second in html so cartridge shows up 1st */
 .console-box {
-    order: -1;
+    position: relative;
+    grid-area: console;
     padding: 18px 18px 22px;
     background: linear-gradient(180deg, var(--card-inner), var(--card));
     border: 3px solid var(--pink);
     border-radius: 14px 14px 40px 14px;
     box-shadow: 5px 5px 0 var(--shadow);
+    transform: rotate(-3deg);
 }
 
 .screen {
-    min-height: 210px;
-    padding: 16px;
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
     background-color: #07040a;
     background-image: repeating-linear-gradient(0deg, color-mix(in srgb, var(--pink) 6%, transparent) 0 1px, transparent 1px 3px);
     border: 2px solid color-mix(in srgb, var(--pink) 50%, transparent);
@@ -1744,11 +1751,37 @@ a.slot:hover, .slot:focus-within {
 }
 
 .console-controls {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
     align-items: center;
+    gap: 10px;
     margin-top: 16px;
     padding-inline: 10px;
+}
+
+.console-btn {
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+}
+
+.ab .console-btn {
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--pink);
+    box-shadow: 0  3px 0 var(--wine);
+    color: var(--page);
+    font-family: var(--tiny-font);
+    font-size: 11px;
+}
+
+.ab .console-btn:active {
+    transform: translateY(3px);
+    box-shadow: none;
 }
 
 .dpad {
@@ -1782,26 +1815,208 @@ a.slot:hover, .slot:focus-within {
     transform: rotate(-20deg);
 }
 
-.ab span {
-    display: grid;
-    place-items: center;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background: var(--pink);
-    color: var(--page);
-    font-family: var(--tiny-font);
-    font-size: 11px;
-}
-
 .console-name {
-    margin: 12px 0 0;
+    margin: 0;
     text-align: center;
     font-family: var(--tiny-font);
     font-size: 11px;
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--font-sec);
+}
+
+.console-top {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    font-family: var(--tiny-font);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--font-sec);
+}
+
+.led {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--pink);
+    box-shadow: 0 0 6px var(--pink), 0 0 14px var(--pink);
+    animation: led-glow 2.4s ease-in-out infinite;
+}
+
+@keyframes led-glow {
+    50% {
+        opacity: 0.45;
+        box-shadow: 0 0 3px var(--pink);
+    }
+}
+
+.screen canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    image-rendering: pixelated;
+}
+
+.screen-text {
+    position: absolute;
+    inset: 0;
+    padding: 14px 16px;
+}
+
+.score {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    color: var(--pink);
+}
+
+.game-msg {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-content: center;
+    gap: 4px;
+    background: color-mix(in srgb, #07040a 55%, transparent);
+    text-align: center;
+}
+
+.game-msg[hidden] {
+    display: none;
+}
+
+.game-msg b {
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--font);
+}
+
+.game-msg span {
+    font-size: 13px;
+}
+
+.start-select {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+}
+
+.pill {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-family: var(--tiny-font);
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--font-sec);
+}
+
+.pill::before {
+    content: "";
+    width: 32px;
+    height: 9px;
+    border-radius: 5px;
+    background: color-mix(in srgb, var(--pink) 55%, var(--card));
+    transform: rotate(-20deg);
+}
+
+.pill:active::before {
+    filter: brightness(1.4);
+}
+
+.console-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 14px;
+}
+
+.speaker {
+    width: 58px;
+    height: 34px;
+    background: repeating-linear-gradient(-60deg, color-mix(in srgb, var(--pink) 45%, transparent) 0 3px, transparent 3px 8px);
+    clip-path: polygon(30% 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.console-sticker {
+    position: absolute;
+    top: -16px;
+    right: -18px;
+    display: grid;
+    place-items: center;
+    width: 70px;
+    height: 70px;
+    border: 2px solid var(--font);
+    border-radius: 50%;
+    background: var(--pink-light);
+    box-shadow: 3px 3px 0 var(--shadow);
+    color: var(--page);
+    font-family: var(--tiny-font);
+    font-size: 10px;
+    line-height: 1.2;
+    letter-spacing: 0.06em;
+    text-align: center;
+    text-transform: uppercase;
+    transform: rotate(12deg);
+    pointer-events: none;
+}
+
+.cable {
+    position: relative;
+    grid-area: cable;
+    height: 3px;
+    margin-inline: -4px;
+    background: repeating-linear-gradient(90deg, var(--pink) 0 6px, transparent 6px 10px);
+}
+
+.cable::after {
+    content: "";
+    position: absolute;
+    top: -5px;
+    right: 0;
+    width: 10px;
+    height: 13px;
+    background: var(--pink);
+    border-radius: 2px;
+}
+
+.cable span {
+    position: absolute;
+    top: -11px;
+    left: 0;
+    font-size: 14px;
+    line-height: 1;
+    color: var(--pink);
+    text-shadow: 0 0 8px var(--pink);
+    animation: cable-packet 2.6s linear infinite;
+}
+
+.cable span + span {
+    animation-delay: 1.3s;
+}
+
+@keyframes cable-packet {
+    0% {
+        left: 4px;
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    15%,
+    92% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    100% {
+        left: calc(100% - 18px);
+        opacity: 0;
+        transform: scale(0.5);
+    }
 }
 
 .sticker {
@@ -1852,10 +2067,12 @@ a.slot:hover, .slot:focus-within {
 @media (max-width: 1000px) {
     .contact-row {
         grid-template-columns: minmax(0, 560px);
+        grid-template-areas: "cart" "console";
+        gap: 48px;
     }
 
-    .console-box {
-        order: 0;
+    .cable {
+        display: none;
     }
 }
 
