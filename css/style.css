@@ -2136,6 +2136,82 @@ a.slot:hover, a.slot:focus-visible, .slot:has(.slot-copy:focus-visible) {
     padding: 16px 18px;
 }
 
+.toasts {
+    position: fixed;
+    top: 72px;
+    right: 16px;
+    z-index: 70;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+    pointer-events: none;
+}
+
+.toast {
+    width: 290px;
+    animation: toast-in 0.45s cubic-bezier(0.3, 1.5, 0.5, 1);
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.toast.out {
+    opacity: 0;
+    transform: translateX(30px);
+}
+
+@keyframes toast-in {
+    from {
+        opacity: 0;
+        transform: translateX(60px) scale(0.9);
+    }
+}
+
+.toast-body {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+}
+
+.toast-icon {
+    display: grid;
+    place-items: center;
+    flex: 0 0 42px;
+    width: 42px;
+    height: 42px;
+    background: var(--pink);
+    color: var(--page);
+    font-family: var(--pixel-font);
+    font-size: 20px;
+}
+
+.toast-text b {
+    display: block;
+    font-family: var(--tiny-font);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--pink);
+}
+
+.toast-text span {
+    font-family: var(--pixel-font);
+    font-size: 16px;
+}
+
+.chip.bump {
+    animation: bump 0.4s ease-out;
+}
+
+@keyframes bump {
+    40% {
+        transform: scale(1.25);
+        background: var(--pink);
+        color: var(--page);
+    }
+}
+
 .quest {
     width: min(820px, calc(100% - 32px));
     padding: 0;
