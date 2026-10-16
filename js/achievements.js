@@ -19,6 +19,10 @@ const ACHVS = "achievements";
 const achvsBtn = document.getElementById("achievementsBtn");
 const achvsCount = document.getElementById("achievementsCount");
 const toasts = document.getElementById("toasts");
+const achvDialog = document.getElementById("achvDialog");
+const achvList = document.getElementById("achvList");
+const achvProgress = document.getElementById("achvProgress");
+const achvFill = document.getElementById("achvFill");
 
 const unlocked = new Set(loadUnlocked());
 
@@ -41,8 +45,40 @@ function saveUnlocked() {
     }
 }
 
+achvsBtn.addEventListener("click", function () {
+    renderList();
+    achvDialog.showModal();
+});
+
+achvDialog.addEventListener("click", function (event) {
+    if (event.target === achvDialog) {
+        achvDialog.close();
+    }
+});
+
 function renderCount() {
     achvsCount.textContent = unlocked.size + "/" + ACHIEVEMENTS.length;
+}
+
+function renderList() {
+    achvList.replaceChildren();
+
+    ACHIEVEMENTS.forEach(function (achv) {
+        const got = unlocked.has(achv.id);
+        const secret = achv.hidden && !got;
+        const item = makeElement("li", got ? "achv" : "achv locked");
+        const text = makeElement("span", "achv-text");
+
+        text.append(
+            makeElement("b", "", secret ? "???" : achv.name),
+            makeElement("span", "", secret ? "secret achievement ♡" : achv.desc)
+        );
+        item.append(makeElement("span", "toast-icon", secret ? "?" : achv.icon), text);
+        achvList.append(item);
+    });
+
+    achvProgress.textContent = unlocked.size + " / " + ACHIEVEMENTS.length;
+    achvFill.style.width = unlocked.size / ACHIEVEMENTS.length * 100 + "%";
 }
 
 function showToast(icon, title, name) {

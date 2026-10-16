@@ -493,6 +493,23 @@
             <div class="star-stage" id="starStage" aria-hidden="true"></div>
             <div class="fx" id="revealFx" aria-hidden="true"></div>
         </dialog>
+
+        <dialog class="window achv-dialog" id="achvDialog" aria-labelledby="achvTitle">
+            <div class="window-bar">
+                <span class="window-title" id="achvTitle">♡ achievements.exe</span>
+                <form method="dialog">
+                    <button class="window-btn" type="submit" aria-label="Close">×</button>
+                </form>
+            </div>
+
+            <div class="window-body achv-body">
+                <div class="achv-progress">
+                    <span id="achvProgress">0 / 12</span>
+                    <span class="achv-track"><span class="achv-fill" id="achvFill"></span></span>
+                </div>
+                <ul class="achv-list" id="achvList"></ul>
+            </div>
+        </dialog>
     </main>
 
     <footer>
