@@ -47,3 +47,44 @@ if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
     observer.observe(stats);
     observer.observe(bars);
 }
+
+const profileGrid = document.getElementById("profileGrid");
+
+const BUBBLE_TIME = 2200;
+
+function showBubble(win, text) {
+    const old = win.querySelector(".bubble");
+
+    if (old) {
+        old.remove();
+    }
+
+    const bubble = makeElement("div", "bubble", text);
+
+    win.append(bubble);
+
+    setTimeout(function () {
+        bubble.classList.add("out");
+        setTimeout(function () {
+            bubble.remove();
+        }, 250);
+    }, BUBBLE_TIME);
+}
+
+profileGrid.addEventListener("click", function (event) {
+    const closeBtn = event.target.closest("[data-close]");
+
+    if (!closeBtn) {
+        return;
+    }
+
+    const win = closeBtn.closest(".window");
+
+    win.classList.remove("refused");
+    // spam clicks replay the shake
+    void win.offsetWidth;
+    win.classList.add("refused");
+
+    showBubble(win, "rude.");
+    unlock("window");
+});

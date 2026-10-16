@@ -721,8 +721,83 @@ section {
 }
 
 .profile-grid .window {
+    position: relative;
     display: flex;
     flex-direction: column;
+}
+
+button.window-btn {
+    padding: 0;
+    cursor: pointer;
+}
+
+.window.refused {
+    animation: shake 0.45s, red-flash 0.6s;
+}
+
+.window.refused .window-bar {
+    animation: bar-red 0.6s;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-7px) rotate(-0.6deg); }
+    40% { transform: translateX(6px) rotate(0.5deg); }
+    60% { transform: translateX(-4px); }
+    80% { transform: translateX(3px); }
+}
+
+@keyframes red-flash {
+    0%, 60% {
+        border-color: var(--red);
+        box-shadow: 5px 5px 0 var(--shadow), 0 0 0 3px color-mix(in srgb, var(--red) 40%, transparent);
+    }
+}
+
+@keyframes bar-red {
+    0%, 60% {
+        background: linear-gradient(90deg, var(--wine), var(--red));
+    }
+}
+
+.bubble {
+    position: absolute;
+    right: -6px;
+    bottom: calc(100% + 12px);
+    z-index: 5;
+    padding: 8px 12px;
+    background: var(--card);
+    border: 2px solid var(--pink);
+    box-shadow: 4px 4px 0 var(--shadow);
+    font-family: var(--pixel-font);
+    font-size: 14px;
+    color: var(--font);
+    white-space: nowrap;
+    pointer-events: none;
+    animation: bubble-pop 0.3s cubic-bezier(0.3, 1.6, 0.5, 1);
+    transition: opacity 0.25s, transform 0.25s;
+}
+
+/* tail pointing at x */
+.bubble::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    right: 14px;
+    border: 8px solid transparent;
+    border-top-color: var(--pink);
+}
+
+.bubble.out {
+    opacity: 0;
+    transform: translateY(-4px);
+}
+
+@keyframes bubble-pop {
+    from {
+        opacity: 0;
+        transform: translateY(6px) scale(0.9);
+    }
 }
 
 .profile-grid .window-body {
