@@ -153,6 +153,9 @@ function startGame() {
     }
 
     game.running = true;
+
+    unlock("start");
+
     game.y = 0;
     game.vy = 0;
     game.enemies = [];

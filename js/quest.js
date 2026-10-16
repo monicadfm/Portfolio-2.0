@@ -90,6 +90,8 @@ function openQuest(project) {
     }
 
     questDialog.showModal();
+
+    unlock("brief");
 }
 
 // one listener for every card, future proof

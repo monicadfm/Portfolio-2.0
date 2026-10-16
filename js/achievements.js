@@ -94,6 +94,8 @@ function showToast(icon, title, name) {
     text.append(makeElement("b", "", title), makeElement("span", "", name));
     body.append(makeElement("span", "toast-icon", icon), text);
     toast.append(bar, body);
+    toasts.hidePopover();
+    toasts.showPopover();
     toasts.append(toast);
 
     setTimeout(function () {

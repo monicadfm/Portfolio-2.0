@@ -12,6 +12,8 @@ copyButton.addEventListener("click", async function () {
         emailSlot.classList.remove("saved");
         void emailSlot.offsetWidth;
         emailSlot.classList.add("saved");
+
+        unlock("copy");
     }
     catch (error) {
         // ctrl + c enabled incase clipboard is blocked

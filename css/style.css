@@ -2138,13 +2138,18 @@ a.slot:hover, a.slot:focus-visible, .slot:has(.slot-copy:focus-visible) {
 
 .toasts {
     position: fixed;
-    top: 72px;
-    right: 16px;
+    inset: 72px 16px auto auto;
     z-index: 70;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     gap: 10px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--font);
+    overflow: visible;
     pointer-events: none;
 }
 

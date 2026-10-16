@@ -32,6 +32,7 @@ function getSavedSide() {
 sideSwitch.addEventListener("click", function () {
     const isFront = document.body.classList.contains("front");
     setSide(isFront ? "back" : "front");
+    unlock("side");
 });
 
 setSide(getSavedSide());

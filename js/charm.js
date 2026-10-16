@@ -102,6 +102,8 @@ charm.addEventListener("pointerdown", function (event) {
 
     charm.setPointerCapture(event.pointerId);
     charm.classList.add("dragging");
+
+    unlock("charm");
 });
 
 charm.addEventListener("pointermove", function (event) {

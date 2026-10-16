@@ -215,6 +215,16 @@ function landStar() {
 
     burst(lastPull.rarity);
     pullAgainBtn.focus();
+
+    unlockPull(lastPull);
+}
+
+function unlockPull(project) {
+    unlock("pull");
+
+    if (project.rarity === "mythic") {
+        unlock("mythic");
+    }
 }
 
 function pull() {
@@ -270,6 +280,8 @@ revealDialog.addEventListener("close", function () {
     starStage.replaceChildren();
     revealDialog.classList.remove("falling");
     highlightCard(lastPull);
+
+    unlockPull(lastPull);
 });
 
 function renderPity() {
